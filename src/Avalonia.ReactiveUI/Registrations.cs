@@ -15,6 +15,10 @@ namespace ReactiveUI
     /// </summary>
     public class PlatformRegistrations : IWantsToRegisterStuff
     {
+        /// <summary>
+        /// TO DO: Tell what this method is for.
+        /// </summary>
+        /// <param name="registerFunction"></param>
         public void Register(Action<Func<object>, Type> registerFunction)
         {
             RxApp.MainThreadScheduler = new SynchronizationContextScheduler(SynchronizationContext.Current);
