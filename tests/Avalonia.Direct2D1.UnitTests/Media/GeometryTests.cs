@@ -6,10 +6,17 @@ using Xunit;
 
 namespace Avalonia.Direct2D1.UnitTests.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="GeometryTests"/> class.
+    /// </summary>
     public class GeometryTests
     {
         private static readonly RectComparer Compare = new RectComparer();
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Should_Measure_Expander_Triangle_Correctly()
         {
@@ -23,6 +30,10 @@ namespace Avalonia.Direct2D1.UnitTests.Media
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Should_Measure_Expander_Triangle_With_Stroke_Correctly()
         {

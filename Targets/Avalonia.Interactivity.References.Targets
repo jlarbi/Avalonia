@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Test" ToolsVersion="4.0">
+  <!-- External references target(s). -->
+  <!-- <Import Project="$(SolutionDir)Targets\XXXXXX.References.Targets" /> -->
+  <!-- Avalonia references. -->
+  <ItemGroup>
+	<ProjectReference Include="$(SolutionDir)src\Avalonia.Interactivity\Avalonia.Interactivity.csproj">
+      <Project>{6B0ED19D-A08B-461C-A9D9-A9EE40B0C06B}</Project>
+      <Name>Avalonia.Interactivity</Name>
+	  <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

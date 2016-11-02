@@ -94,7 +94,10 @@ namespace Avalonia.Controls.Presenters
             set { SetValue(TransitionProperty, value); }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called when the <see cref="Panel"/> is created.
+        /// </summary>
+        /// <param name="panel">The panel.</param>
         protected override void PanelCreated(IPanel panel)
         {
 #pragma warning disable 4014
@@ -102,7 +105,11 @@ namespace Avalonia.Controls.Presenters
 #pragma warning restore 4014
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called when the items for the presenter change, either because items
+        /// has been set, the items collection has been modified, or the panel has been created.
+        /// </summary>
+        /// <param name="e">A description of the change.</param>
         protected override void ItemsChanged(NotifyCollectionChangedEventArgs e)
         {
             // TODO: Handle items changing.           

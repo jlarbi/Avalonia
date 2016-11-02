@@ -79,6 +79,14 @@ namespace Avalonia.Controls.Generators
         /// <returns>The removed containers.</returns>
         IEnumerable<ItemContainerInfo> RemoveRange(int startingIndex, int count);
 
+        /// <summary>
+        /// Attempts to recycle the given element by moving it from a position to another.
+        /// </summary>
+        /// <param name="oldIndex">The old position.</param>
+        /// <param name="newIndex">The new position.</param>
+        /// <param name="item">The item to recycle.</param>
+        /// <param name="selector">The member selector if needed.</param>
+        /// <returns>True if recycled, false otherwise.</returns>
         bool TryRecycle(
             int oldIndex,
             int newIndex,

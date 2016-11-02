@@ -68,6 +68,10 @@ namespace Avalonia.Media.Imaging
             PlatformImpl.Save(fileName);
         }
 
+        /// <summary>
+        /// Saves the bitmap to a stream.
+        /// </summary>
+        /// <param name="stream">The stream.</param>
         public void Save(Stream stream)
         {
             PlatformImpl.Save(stream);

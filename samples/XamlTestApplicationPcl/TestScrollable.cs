@@ -8,6 +8,9 @@ using Avalonia.VisualTree;
 
 namespace XamlTestApplication
 {
+    /// <summary>
+    /// Definition of the <see cref="TestScrollable"/> class.
+    /// </summary>
     public class TestScrollable : Control, ILogicalScrollable
     {
         private int itemCount = 100;
@@ -16,7 +19,14 @@ namespace XamlTestApplication
         private Size _viewport;
         private Size _lineSize;
 
+        /// <summary>
+        /// Gets the flag indicating whether the scroll is enabled or not.
+        /// </summary>
         public bool IsLogicalScrollEnabled => true;
+
+        /// <summary>
+        /// Gets or sets the callback called on scroll invalidation.
+        /// </summary>
         public Action InvalidateScroll { get; set; }
 
         Size IScrollable.Extent
@@ -40,6 +50,9 @@ namespace XamlTestApplication
             get { return _viewport; }
         }
 
+        /// <summary>
+        /// Gets the scroll size.
+        /// </summary>
         public Size ScrollSize
         {
             get
@@ -48,6 +61,9 @@ namespace XamlTestApplication
             }
         }
 
+        /// <summary>
+        /// Gets the page scroll size.
+        /// </summary>
         public Size PageScrollSize
         {
             get
@@ -56,6 +72,10 @@ namespace XamlTestApplication
             }
         }
 
+        /// <summary>
+        /// Render the scrollable test control.
+        /// </summary>
+        /// <param name="context"></param>
         public override void Render(DrawingContext context)
         {
             var y = 0.0;
@@ -76,16 +96,33 @@ namespace XamlTestApplication
             }
         }
 
+        /// <summary>
+        /// Attempts to bring a portion of the target visual into view by scrolling the content.
+        /// </summary>
+        /// <param name="target">The target visual.</param>
+        /// <param name="targetRect">The portion of the target visual to bring into view.</param>
+        /// <returns>True if the scroll offset was changed; otherwise false.</returns>
         public bool BringIntoView(IControl target, Rect targetRect)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets the next control in the specified direction.
+        /// </summary>
+        /// <param name="direction">The movement direction.</param>
+        /// <param name="from">The control from which movement begins.</param>
+        /// <returns>The control.</returns>
         public IControl GetControlInDirection(NavigationDirection direction, IControl from)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Measures the control and its child elements as part of a layout pass.
+        /// </summary>
+        /// <param name="availableSize">The size available to the control.</param>
+        /// <returns>The desired size for the control.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
             using (var line = new FormattedText(
@@ -102,6 +139,11 @@ namespace XamlTestApplication
             }
         }
 
+        /// <summary>
+        /// Positions child elements as part of a layout pass.
+        /// </summary>
+        /// <param name="finalSize">The size available to the control.</param>
+        /// <returns>The actual size used.</returns>
         protected override Size ArrangeOverride(Size finalSize)
         {
             _viewport = new Size(finalSize.Width, finalSize.Height / _lineSize.Height);

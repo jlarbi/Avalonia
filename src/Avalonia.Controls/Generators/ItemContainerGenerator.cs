@@ -28,16 +28,24 @@ namespace Avalonia.Controls.Generators
             Owner = owner;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the currently realized containers.
+        /// </summary>
         public IEnumerable<ItemContainerInfo> Containers => _containers.Values;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Signalled whenever new containers are materialized.
+        /// </summary>
         public event EventHandler<ItemContainerEventArgs> Materialized;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Event raised whenever containers are dematerialized.
+        /// </summary>
         public event EventHandler<ItemContainerEventArgs> Dematerialized;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Event raised whenever containers are recycled.
+        /// </summary>
         public event EventHandler<ItemContainerEventArgs> Recycled;
 
         /// <summary>
@@ -50,7 +58,15 @@ namespace Avalonia.Controls.Generators
         /// </summary>
         public IControl Owner { get; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Creates a container control for an item.
+        /// </summary>
+        /// <param name="index">
+        /// The index of the item of data in the control's items.
+        /// </param>
+        /// <param name="item">The item.</param>
+        /// <param name="selector">An optional member selector.</param>
+        /// <returns>The created controls.</returns>
         public ItemContainerInfo Materialize(
             int index,
             object item,
@@ -65,7 +81,14 @@ namespace Avalonia.Controls.Generators
             return container;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Removes a set of created containers.
+        /// </summary>
+        /// <param name="startingIndex">
+        /// The index of the first item in the control's items.
+        /// </param>
+        /// <param name="count">The the number of items to remove.</param>
+        /// <returns>The removed containers.</returns>
         public virtual IEnumerable<ItemContainerInfo> Dematerialize(int startingIndex, int count)
         {
             var result = new List<ItemContainerInfo>();
@@ -81,7 +104,11 @@ namespace Avalonia.Controls.Generators
             return result;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Inserts space for newly inserted containers in the index.
+        /// </summary>
+        /// <param name="index">The index at which space should be inserted.</param>
+        /// <param name="count">The number of blank spaces to create.</param>
         public virtual void InsertSpace(int index, int count)
         {
             if (count > 0)
@@ -99,7 +126,15 @@ namespace Avalonia.Controls.Generators
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Removes a set of created containers and updates the index of later containers to fill
+        /// the gap.
+        /// </summary>
+        /// <param name="startingIndex">
+        /// The index of the first item in the control's items.
+        /// </param>
+        /// <param name="count">The the number of items to remove.</param>
+        /// <returns>The removed containers.</returns>
         public virtual IEnumerable<ItemContainerInfo> RemoveRange(int startingIndex, int count)
         {
             var result = new List<ItemContainerInfo>();
@@ -134,7 +169,14 @@ namespace Avalonia.Controls.Generators
             return result;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Attempts to recycle the given element by moving it from a position to another.
+        /// </summary>
+        /// <param name="oldIndex">The old position.</param>
+        /// <param name="newIndex">The new position.</param>
+        /// <param name="item">The item to recycle.</param>
+        /// <param name="selector">The member selector if needed.</param>
+        /// <returns>True if recycled, false otherwise.</returns>
         public virtual bool TryRecycle(
             int oldIndex,
             int newIndex,
@@ -144,7 +186,10 @@ namespace Avalonia.Controls.Generators
             return false;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Clears all created containers and returns the removed controls.
+        /// </summary>
+        /// <returns>The removed controls.</returns>
         public virtual IEnumerable<ItemContainerInfo> Clear()
         {
             var result = Containers.ToList();
@@ -158,7 +203,11 @@ namespace Avalonia.Controls.Generators
             return result;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the container control representing the item with the specified index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns>The container, or null if no container created.</returns>
         public IControl ContainerFromIndex(int index)
         {
             ItemContainerInfo result;
@@ -166,7 +215,11 @@ namespace Avalonia.Controls.Generators
             return result?.ContainerControl;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the index of the specified container control.
+        /// </summary>
+        /// <param name="container">The container.</param>
+        /// <returns>The index of the container, or -1 if not found.</returns>
         public int IndexFromContainer(IControl container)
         {
             foreach (var i in _containers)

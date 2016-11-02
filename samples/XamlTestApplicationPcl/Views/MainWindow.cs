@@ -11,10 +11,19 @@ using XamlTestApplication.ViewModels;
 
 namespace XamlTestApplication.Views
 {
+    /// <summary>
+    /// Definition of the <see cref="MainWindow"/> class.
+    /// </summary>
     public class MainWindow : Window
     {
+        /// <summary>
+        /// Stores the exit menu item.
+        /// </summary>
         private MenuItem _exitMenu;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -22,6 +31,9 @@ namespace XamlTestApplication.Views
             DevTools.Attach(this);
         }
 
+        /// <summary>
+        /// Initializes the main window.
+        /// </summary>
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);

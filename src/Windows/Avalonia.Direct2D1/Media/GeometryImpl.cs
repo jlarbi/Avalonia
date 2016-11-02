@@ -85,7 +85,11 @@ namespace Avalonia.Direct2D1.Media
             }
         }
 
-
+        /// <summary>
+        /// Checks whether the area filled by the geometry contains the given point.
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns>True if contained, false otherwise.</returns>
         public bool FillContains(Point point)
         {
             return Geometry.FillContainsPoint(point.ToSharpDX());

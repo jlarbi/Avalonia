@@ -218,6 +218,11 @@ namespace Avalonia.VisualTree
             return target.GetVisualAncestors().Any(x => x == visual);
         }
 
+        /// <summary>
+        /// Sorts the given elements by Z index
+        /// </summary>
+        /// <param name="elements"></param>
+        /// <returns></returns>
         public static IEnumerable<IVisual> SortByZIndex(this IEnumerable<IVisual> elements)
         {
             return elements
@@ -231,6 +236,9 @@ namespace Avalonia.VisualTree
                 .Select(x => x.Element);
         }
 
+        /// <summary>
+        /// Definition of the <see cref="ZOrderElement"/> class.
+        /// </summary>
         private class ZOrderElement : IComparable<ZOrderElement>
         {
             public IVisual Element { get; set; }

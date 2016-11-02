@@ -7,23 +7,44 @@ using Avalonia.Metadata;
 
 namespace Avalonia.Controls.Primitives
 {
+    /// <summary>
+    /// Definition of the <see cref="Track"/> class.
+    /// </summary>
     public class Track : Control
     {
+        /// <summary>
+        /// The minimum property.
+        /// </summary>
         public static readonly DirectProperty<Track, double> MinimumProperty =
             RangeBase.MinimumProperty.AddOwner<Track>(o => o.Minimum, (o,v) => o.Minimum = v);
 
+        /// <summary>
+        /// The maximum property.
+        /// </summary>
         public static readonly DirectProperty<Track, double> MaximumProperty =
             RangeBase.MaximumProperty.AddOwner<Track>(o => o.Maximum, (o, v) => o.Maximum = v);
 
+        /// <summary>
+        /// The value property.
+        /// </summary>
         public static readonly DirectProperty<Track, double> ValueProperty =
             RangeBase.ValueProperty.AddOwner<Track>(o => o.Value, (o, v) => o.Value = v);
 
+        /// <summary>
+        /// The viewport size property.
+        /// </summary>
         public static readonly StyledProperty<double> ViewportSizeProperty =
             ScrollBar.ViewportSizeProperty.AddOwner<Track>();
 
+        /// <summary>
+        /// The orientation property.
+        /// </summary>
         public static readonly StyledProperty<Orientation> OrientationProperty =
             ScrollBar.OrientationProperty.AddOwner<Track>();
 
+        /// <summary>
+        /// The thumb property.
+        /// </summary>
         public static readonly StyledProperty<Thumb> ThumbProperty =
             AvaloniaProperty.Register<Track, Thumb>("Thumb");
 
@@ -31,42 +52,63 @@ namespace Avalonia.Controls.Primitives
         private double _maximum = 100.0;
         private double _value;
 
+        /// <summary>
+        /// Initializes static member(s) of the <see cref="Track"/> class.
+        /// </summary>
         static Track()
         {
             ThumbProperty.Changed.AddClassHandler<Track>(x => x.ThumbChanged);
             AffectsArrange(MinimumProperty, MaximumProperty, ValueProperty, OrientationProperty);
         }
 
+        /// <summary>
+        /// Gets or sets the minimum.
+        /// </summary>
         public double Minimum
         {
             get { return _minimum; }
             set { SetAndRaise(MinimumProperty, ref _minimum, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the maximum.
+        /// </summary>
         public double Maximum
         {
             get { return _maximum; }
             set { SetAndRaise(MaximumProperty, ref _maximum, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
         public double Value
         {
             get { return _value; }
             set { SetAndRaise(ValueProperty, ref _value, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the viewport size.
+        /// </summary>
         public double ViewportSize
         {
             get { return GetValue(ViewportSizeProperty); }
             set { SetValue(ViewportSizeProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the orientation.
+        /// </summary>
         public Orientation Orientation
         {
             get { return GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the thumb.
+        /// </summary>
         [Content]
         public Thumb Thumb
         {
@@ -74,6 +116,11 @@ namespace Avalonia.Controls.Primitives
             set { SetValue(ThumbProperty, value); }
         }
 
+        /// <summary>
+        /// Custom measurement of the UI element provided by sub classes.
+        /// </summary>
+        /// <param name="availableSize">The available size that parent can give to the child.</param>
+        /// <returns>The requested UI element size.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
             var thumb = Thumb;
@@ -95,6 +142,10 @@ namespace Avalonia.Controls.Primitives
             return base.MeasureOverride(availableSize);
         }
 
+        /// <summary>
+        /// Custom arrangement of the UI element provided by sub classes.
+        /// </summary>
+        /// <param name="finalSize"></param>
         protected override Size ArrangeOverride(Size finalSize)
         {
             var thumb = Thumb;
@@ -132,6 +183,10 @@ namespace Avalonia.Controls.Primitives
             return finalSize;
         }
 
+        /// <summary>
+        /// Delegate called on thumb changed.
+        /// </summary>
+        /// <param name="e"></param>
         private void ThumbChanged(AvaloniaPropertyChangedEventArgs e)
         {
             var oldThumb = (Thumb)e.OldValue;
@@ -153,6 +208,11 @@ namespace Avalonia.Controls.Primitives
             }
         }
 
+        /// <summary>
+        /// Delegate called on thumb dragged.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ThumbDragged(object sender, VectorEventArgs e)
         {
             double range = Maximum - Minimum;

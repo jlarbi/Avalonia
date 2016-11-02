@@ -62,7 +62,9 @@ namespace Avalonia
         /// <inheritdoc/>
         public override bool IsDirect => true;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the flag indicating whether the property is read only or not.
+        /// </summary>
         public override bool IsReadOnly => Setter == null;
 
         /// <summary>

@@ -8,6 +8,9 @@ using System.Reactive.Linq;
 
 namespace Avalonia.Data
 {
+    /// <summary>
+    /// Definition of the <see cref="BindingOperations"/> class.
+    /// </summary>
     public static class BindingOperations
     {
         /// <summary>

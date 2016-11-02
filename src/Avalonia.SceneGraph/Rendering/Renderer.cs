@@ -7,6 +7,9 @@ using Avalonia.VisualTree;
 
 namespace Avalonia.Rendering
 {
+    /// <summary>
+    /// Definition of the <see cref="Renderer"/> class.
+    /// </summary>
     public class Renderer : IDisposable, IRenderer
     {
         private readonly IRenderLoop _renderLoop;
@@ -14,6 +17,11 @@ namespace Avalonia.Rendering
         private IRenderTarget _renderTarget;
         private bool _dirty;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Renderer"/> class.
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="renderLoop"></param>
         public Renderer(IRenderRoot root, IRenderLoop renderLoop)
         {
             Contract.Requires<ArgumentNullException>(root != null);
@@ -23,17 +31,28 @@ namespace Avalonia.Rendering
             _renderLoop.Tick += OnRenderLoopTick;
         }
 
-        public void AddDirty(IVisual visual)
+        /// <summary>
+        /// Adds a dirty visual.
+        /// </summary>
+        /// <param name="pVisual"></param>
+        public void AddDirty(IVisual pVisual)
         {
             _dirty = true;
         }
 
+        /// <summary>
+        /// Releases resources.
+        /// </summary>
         public void Dispose()
         {
             _renderLoop.Tick -= OnRenderLoopTick;
         }
 
-        public void Render(Rect rect)
+        /// <summary>
+        /// Renders in the given region.
+        /// </summary>
+        /// <param name="pRegion"></param>
+        public void Render(Rect pRegion)
         {
             if (_renderTarget == null)
             {
@@ -56,6 +75,11 @@ namespace Avalonia.Rendering
             }
         }
 
+        /// <summary>
+        /// Delegate called on each render loop tick.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnRenderLoopTick(object sender, EventArgs e)
         {
             if (_dirty)

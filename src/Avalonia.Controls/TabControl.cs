@@ -83,6 +83,12 @@ namespace Avalonia.Controls
             set { SetValue(TabStripPlacementProperty, value); }
         }
 
+        /// <summary>
+        /// Creates the <see cref="ItemContainerGenerator"/> for the control.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="IItemContainerGenerator"/> or null.
+        /// </returns>
         protected override IItemContainerGenerator CreateItemContainerGenerator()
         {
             // TabControl doesn't actually create items - instead its TabStrip and Carousel
@@ -92,6 +98,10 @@ namespace Avalonia.Controls
             return null;
         }
 
+        /// <summary>
+        /// Called when the control's template is applied.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnTemplateApplied(TemplateAppliedEventArgs e)
         {
             base.OnTemplateApplied(e);

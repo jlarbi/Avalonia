@@ -60,6 +60,11 @@ namespace Avalonia.Controls
         /// </summary>
         public Action<TAppBuilder> BeforeStartCallback { get; private set; } = builder => { };
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AppBuilderBase{TAppBuilder}"/> class.
+        /// </summary>
+        /// <param name="platform">The platform the app will run on.</param>
+        /// <param name="platformSevices">The services.</param>
         protected AppBuilderBase(IRuntimePlatform platform, Action platformSevices)
         {
             RuntimePlatform = platform;
@@ -91,6 +96,9 @@ namespace Avalonia.Controls
             };
         }
 
+        /// <summary>
+        /// Gets the application builder.
+        /// </summary>
         protected TAppBuilder Self => (TAppBuilder) this;
 
         /// <summary>
@@ -105,6 +113,11 @@ namespace Avalonia.Controls
             return Self;
         }
 
+        /// <summary>
+        /// Post new setup action(s) to do on application setup ending.
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <returns>The application builder.</returns>
         public TAppBuilder AfterSetup(Action<TAppBuilder> callback)
         {
             AfterSetupCallback = (Action<TAppBuilder>)Delegate.Combine(AfterSetupCallback, callback);
@@ -186,6 +199,10 @@ namespace Avalonia.Controls
             init.Invoke(null, null);
         };
 
+        /// <summary>
+        /// Add new modules setup for the application.
+        /// </summary>
+        /// <returns>The application builder.</returns>
         public TAppBuilder UseAvaloniaModules() => AfterSetup(builder => SetupAvaloniaModules());
 
         private void SetupAvaloniaModules()

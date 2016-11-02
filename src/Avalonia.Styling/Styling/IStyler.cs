@@ -5,8 +5,15 @@ using System;
 
 namespace Avalonia.Styling
 {
+    /// <summary>
+    /// Definition of the <see cref="IStyler"/> interface.
+    /// </summary>
     public interface IStyler
     {
+        /// <summary>
+        /// Applies the style(s) to the given control.
+        /// </summary>
+        /// <param name="control">The control to apply the style(s) to.</param>
         void ApplyStyles(IStyleable control);
     }
 }

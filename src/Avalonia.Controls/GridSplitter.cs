@@ -24,6 +24,9 @@ namespace Avalonia.Controls
         public static readonly StyledProperty<Orientation> OrientationProperty =
             AvaloniaProperty.Register<GridSplitter, Orientation>(nameof(Orientation));
 
+        /// <summary>
+        /// Stores the grid.
+        /// </summary>
         protected Grid _grid;
 
         private DefinitionBase _prevDefinition;
@@ -58,6 +61,11 @@ namespace Avalonia.Controls
             PseudoClass(OrientationProperty, o => o == Avalonia.Controls.Orientation.Horizontal, ":horizontal");
         }
 
+        /// <summary>
+        /// Gets the delta constraints.
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
         private void GetDeltaConstraints(out double min, out double max)
         {
             double prevDefinitionLen = GetActualLength(_prevDefinition);
@@ -72,6 +80,10 @@ namespace Avalonia.Controls
             max = Math.Min(prevDefinitionMax - prevDefinitionLen, nextDefinitionLen - nextDefinitionMin);
         }
 
+        /// <summary>
+        /// Delegate called on drag delta changes.
+        /// </summary>
+        /// <param name="e">The event arguments.</param>
         protected override void OnDragDelta(VectorEventArgs e)
         {
             var delta = Orientation == Orientation.Vertical ? e.Vector.X : e.Vector.Y;
@@ -133,6 +145,10 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Called when the control is added to a visual tree.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
         {
             base.OnAttachedToVisualTree(e);

@@ -5,10 +5,19 @@ using System;
 
 namespace Avalonia.Direct2D1.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="BrushImpl"/> class.
+    /// </summary>
     public abstract class BrushImpl : IDisposable
     {
+        /// <summary>
+        /// Gets or sets the brush.
+        /// </summary>
         public SharpDX.Direct2D1.Brush PlatformBrush { get; set; }
 
+        /// <summary>
+        /// Releases resources.
+        /// </summary>
         public virtual void Dispose()
         {
             if (PlatformBrush != null)

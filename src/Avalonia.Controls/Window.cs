@@ -110,14 +110,18 @@ namespace Avalonia.Controls
             _maxPlatformClientSize = this.PlatformImpl.MaxClientSize;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Raised when an element is registered with the name scope.
+        /// </summary>
         event EventHandler<NameScopeEventArgs> INameScope.Registered
         {
             add { _nameScope.Registered += value; }
             remove { _nameScope.Registered -= value; }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Raised when an element is unregistered with the name scope.
+        /// </summary>
         event EventHandler<NameScopeEventArgs> INameScope.Unregistered
         {
             add { _nameScope.Unregistered += value; }
@@ -175,10 +179,14 @@ namespace Avalonia.Controls
             set { SetValue(IconProperty, value); }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// The maximum client size available.
+        /// </summary>
         Size ILayoutRoot.MaxClientSize => _maxPlatformClientSize;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the type by which the control is styled.
+        /// </summary>
         Type IStyleable.StyleKey => typeof(Window);
 
         /// <summary>
@@ -190,6 +198,9 @@ namespace Avalonia.Controls
             PlatformImpl.Dispose();
         }
 
+        /// <summary>
+        /// Handles the application exiting, either from the last window closing, or a call to <see cref="IApplicationLifecycle.Exit"/>.
+        /// </summary>
         protected override void HandleApplicationExiting()
         {
             base.HandleApplicationExiting();
@@ -300,7 +311,11 @@ namespace Avalonia.Controls
             _nameScope.Unregister(name);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Measures the control and its child elements as part of a layout pass.
+        /// </summary>
+        /// <param name="availableSize">The size available to the control.</param>
+        /// <returns>The desired size for the control.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
             var sizeToContent = SizeToContent;
@@ -353,8 +368,16 @@ namespace Avalonia.Controls
 
 namespace Avalonia
 {
+    /// <summary>
+    /// Definition of the <see cref="WindowApplicationExtensions"/> class.
+    /// </summary>
     public static class WindowApplicationExtensions
     {
+        /// <summary>
+        /// Runs an application using the required type of window.
+        /// </summary>
+        /// <typeparam name="TWindow">The window to use</typeparam>
+        /// <param name="app">The application object caller.</param>
         public static void RunWithMainWindow<TWindow>(this Application app) where TWindow : Avalonia.Controls.Window, new()
         {
             var window = new TWindow();

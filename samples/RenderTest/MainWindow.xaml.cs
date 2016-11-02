@@ -15,8 +15,14 @@ using Avalonia.Rendering;
 
 namespace RenderTest
 {
+    /// <summary>
+    /// Definition of the <see cref="MainWindow"/> class.
+    /// </summary>
     public class MainWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
         public MainWindow()
         {
             this.InitializeComponent();
@@ -25,11 +31,17 @@ namespace RenderTest
             RendererMixin.DrawFpsCounter = true;
         }
 
+        /// <summary>
+        /// Initializes the main window.
+        /// </summary>
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
         }
 
+        /// <summary>
+        /// Creates animations.
+        /// </summary>
         private void CreateAnimations()
         {
             const int Count = 100;

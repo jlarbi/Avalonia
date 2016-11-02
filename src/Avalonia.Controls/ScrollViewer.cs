@@ -355,6 +355,13 @@ namespace Avalonia.Controls
             control.SetValue(VerticalScrollBarVisibilityProperty, value);
         }
 
+        /// <summary>
+        /// Ensures an offset value is within the value range.
+        /// </summary>
+        /// <param name="extent"></param>
+        /// <param name="viewport"></param>
+        /// <param name="offset"></param>
+        /// <returns>The coerced value.</returns>
         internal static Vector CoerceOffset(Size extent, Size viewport, Vector offset)
         {
             var maxX = Math.Max(extent.Width - viewport.Width, 0);

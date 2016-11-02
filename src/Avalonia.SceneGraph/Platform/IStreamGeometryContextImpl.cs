@@ -57,6 +57,10 @@ namespace Avalonia.Platform
         /// <param name="isClosed">Whether the figure is closed.</param>
         void EndFigure(bool isClosed);
 
+        /// <summary>
+        /// Set the how-to-fill rule for the geometry context.
+        /// </summary>
+        /// <param name="fillRule"></param>
         void SetFillRule(FillRule fillRule);
     }
 }

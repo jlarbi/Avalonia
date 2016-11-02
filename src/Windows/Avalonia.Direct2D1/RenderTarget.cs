@@ -11,6 +11,9 @@ using DwFactory = SharpDX.DirectWrite.Factory;
 
 namespace Avalonia.Direct2D1
 {
+    /// <summary>
+    /// Definition of the <see cref="RenderTarget"/> class.
+    /// </summary>
     public class RenderTarget : IRenderTarget
     {
         private readonly IntPtr _hwnd;
@@ -103,6 +106,9 @@ namespace Avalonia.Direct2D1
             return new DrawingContext(new Media.DrawingContext(_renderTarget, DirectWriteFactory));
         }
 
+        /// <summary>
+        /// Releases resources.
+        /// </summary>
         public void Dispose()
         {
             _renderTarget.Dispose();

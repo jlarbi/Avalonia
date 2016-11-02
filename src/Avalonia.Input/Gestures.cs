@@ -6,13 +6,22 @@ using Avalonia.Interactivity;
 
 namespace Avalonia.Input
 {
+    /// <summary>
+    /// Definition of the <see cref="Gestures"/> class.
+    /// </summary>
     public static class Gestures
     {
+        /// <summary>
+        /// The tapped event.
+        /// </summary>
         public static readonly RoutedEvent<RoutedEventArgs> TappedEvent = RoutedEvent.Register<RoutedEventArgs>(
             "Tapped",
             RoutingStrategies.Bubble,
             typeof(Gestures));
 
+        /// <summary>
+        /// The double tapped event.
+        /// </summary>
         public static readonly RoutedEvent<RoutedEventArgs> DoubleTappedEvent = RoutedEvent.Register<RoutedEventArgs>(
             "DoubleTapped",
             RoutingStrategies.Bubble,
@@ -20,12 +29,19 @@ namespace Avalonia.Input
 
         private static WeakReference s_lastPress;
 
+        /// <summary>
+        /// Initializes static member(s) of the <see cref="Gestures"/> class.
+        /// </summary>
         static Gestures()
         {
             InputElement.PointerPressedEvent.RouteFinished.Subscribe(PointerPressed);
             InputElement.PointerReleasedEvent.RouteFinished.Subscribe(PointerReleased);
         }
 
+        /// <summary>
+        /// Delegate called on pointer pressed.
+        /// </summary>
+        /// <param name="ev">The event arguments.</param>
         private static void PointerPressed(RoutedEventArgs ev)
         {
             if (ev.Route == RoutingStrategies.Bubble)
@@ -43,6 +59,10 @@ namespace Avalonia.Input
             }
         }
 
+        /// <summary>
+        /// Delegate called on pointer released
+        /// </summary>
+        /// <param name="ev">The event arguments.</param>
         private static void PointerReleased(RoutedEventArgs ev)
         {
             if (ev.Route == RoutingStrategies.Bubble)

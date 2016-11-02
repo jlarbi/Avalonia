@@ -6,8 +6,14 @@ using Avalonia.Platform;
 
 namespace Avalonia.Gtk
 {
+    /// <summary>
+    /// Definition of the <see cref="PopupImpl"/> class.
+    /// </summary>
     public class PopupImpl : WindowImpl, IPopupImpl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PopupImpl"/> class.
+        /// </summary>
         public PopupImpl()
             : base(WindowType.Popup)
         {

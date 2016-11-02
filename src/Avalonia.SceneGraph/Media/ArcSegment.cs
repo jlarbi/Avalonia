@@ -3,6 +3,9 @@
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="ArcSegment"/> class.
+    /// </summary>
     public sealed class ArcSegment : PathSegment
     {
         /// <summary>
@@ -95,9 +98,13 @@ namespace Avalonia.Media
             set { SetValue(SweepDirectionProperty, value); }
         }
 
-        protected internal override void ApplyTo(StreamGeometryContext ctx)
+        /// <summary>
+        /// Add a new segment to the arc being drawn.
+        /// </summary>
+        /// <param name="pContext">The geometry description.</param>
+        protected internal override void ApplyTo(StreamGeometryContext pContext)
         {
-            ctx.ArcTo(Point, Size, RotationAngle, IsLargeArc, SweepDirection);
+            pContext.ArcTo(Point, Size, RotationAngle, IsLargeArc, SweepDirection);
         }
     }
 }

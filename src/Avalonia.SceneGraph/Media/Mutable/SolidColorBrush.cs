@@ -12,6 +12,9 @@ namespace Avalonia.Media.Mutable
     /// </remarks>
     public class SolidColorBrush : Brush, ISolidColorBrush
     {
+        /// <summary>
+        /// Gets the color property.
+        /// </summary>
         public static readonly DirectProperty<SolidColorBrush, Color> ColorProperty =
             AvaloniaProperty.RegisterDirect<SolidColorBrush, Color>(
                 "Color",

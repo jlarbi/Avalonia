@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Test" ToolsVersion="4.0">
+  <!-- External references target(s). -->
+  <!-- <Import Project="$(SolutionDir)Targets\XXXXXX.References.Targets" /> -->
+  <!-- Avalonia references. -->
+  <ItemGroup>
+	<ProjectReference Include="$(SolutionDir)src\Avalonia.Diagnostics\Avalonia.Diagnostics.csproj">
+      <Project>{7062AE20-5DCC-4442-9645-8195BDECE63E}</Project>
+      <Name>Avalonia.Diagnostics</Name>
+	  <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -44,7 +44,11 @@ namespace Avalonia.Controls.Generators
         /// </summary>
         protected AvaloniaProperty ContentTemplateProperty { get; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Creates the container for an item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>The created container control.</returns>
         protected override IControl CreateContainer(object item)
         {
             var container = item as T;
@@ -77,7 +81,14 @@ namespace Avalonia.Controls.Generators
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Attempts to recycle the given element by moving it from a position to another.
+        /// </summary>
+        /// <param name="oldIndex">The old position.</param>
+        /// <param name="newIndex">The new position.</param>
+        /// <param name="item">The item to recycle.</param>
+        /// <param name="selector">The member selector if needed.</param>
+        /// <returns>True if recycled, false otherwise.</returns>
         public override bool TryRecycle(
             int oldIndex,
             int newIndex,

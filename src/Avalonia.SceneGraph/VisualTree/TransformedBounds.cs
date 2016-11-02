@@ -38,6 +38,11 @@ namespace Avalonia.VisualTree
         /// </summary>
         public Matrix Transform { get; }
 
+        /// <summary>
+        /// Checks whether the point is contained in bounds.
+        /// </summary>
+        /// <param name="point">The point to test in bounds</param>
+        /// <returns>True if contained, false otherwise.</returns>
         public bool Contains(Point point)
         {
             if (Transform.HasInverse)

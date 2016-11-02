@@ -10,8 +10,16 @@ using Avalonia.Input;
 
 namespace Avalonia.Platform
 {
+    /// <summary>
+    /// Definition of the <see cref="IStandardCursorFactory"/> interface.
+    /// </summary>
     public interface IStandardCursorFactory
     {
+        /// <summary>
+        /// Gets the platform-specific cursor.
+        /// </summary>
+        /// <param name="cursorType">The cursor type.</param>
+        /// <returns>The platform-specific cursor.</returns>
         IPlatformHandle GetCursor(StandardCursorType cursorType);
     }
 }

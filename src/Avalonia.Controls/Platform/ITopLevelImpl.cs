@@ -133,6 +133,9 @@ namespace Avalonia.Platform
         /// </summary>
         void BeginResizeDrag(WindowEdge edge);
 
+        /// <summary>
+        /// Gets or sets the position.
+        /// </summary>
         Point Position { get; set; }
     }
 }

@@ -6,10 +6,21 @@ using Avalonia.VisualTree;
 
 namespace Avalonia.Rendering
 {
+    /// <summary>
+    /// Definition of the <see cref="IRenderer"/> interface.
+    /// </summary>
     public interface IRenderer : IDisposable
     {
-        void AddDirty(IVisual visual);
+        /// <summary>
+        /// Adds a dirty visual.
+        /// </summary>
+        /// <param name="pVisual"></param>
+        void AddDirty(IVisual pVisual);
 
-        void Render(Rect rect);
+        /// <summary>
+        /// Renders in the given region.
+        /// </summary>
+        /// <param name="pRegion"></param>
+        void Render(Rect pRegion);
     }
 }

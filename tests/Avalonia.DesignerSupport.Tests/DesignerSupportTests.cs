@@ -9,8 +9,17 @@ using Xunit.Extensions;
 
 namespace Avalonia.DesignerSupport.Tests
 {
+    /// <summary>
+    /// Definition of the <see cref="DesignerSupportTests"/> class.
+    /// </summary>
     public class DesignerSupportTests
     {
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        /// <param name="outputDir"></param>
+        /// <param name="xamlFile"></param>
+        // TO DO: Comment...
         [Theory,
          InlineData(@"..\..\..\Avalonia.DesignerSupport.TestApp\bin\$BUILD\Avalonia.DesignerSupport.TestApp.exe", @"..\..\..\Avalonia.DesignerSupport.TestApp\MainWindow.xaml"),
          InlineData(@"..\..\..\..\samples\ControlCatalog.Desktop\bin\$BUILD\ControlCatalog.dll", @"..\..\..\..\samples\ControlCatalog\MainWindow.xaml")]

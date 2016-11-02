@@ -3,8 +3,15 @@
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the abstract <see cref="PathSegment"/> class.
+    /// </summary>
     public abstract class PathSegment : AvaloniaObject
     {
-        protected internal abstract void ApplyTo(StreamGeometryContext ctx);
+        /// <summary>
+        /// Applies geometry changes to the given one.
+        /// </summary>
+        /// <param name="pContext">The geometry context.</param>
+        protected internal abstract void ApplyTo(StreamGeometryContext pContext);
     }
 }

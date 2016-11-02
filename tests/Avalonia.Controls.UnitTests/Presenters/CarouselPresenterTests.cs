@@ -193,12 +193,24 @@ namespace Avalonia.Controls.UnitTests.Presenters
             Assert.Equal(0, target.Panel.Children.Count);            
         }
 
+        /// <summary>
+        /// Definition of the <see cref="TestItem"/> class.
+        /// </summary>
         private class TestItem : ContentControl
         {
         }
 
+        /// <summary>
+        /// Definition of the <see cref="TestItemsControl"/> class.
+        /// </summary>
         private class TestItemsControl : ItemsControl
         {
+            /// <summary>
+            /// Creates the <see cref="ItemContainerGenerator"/> for the control.
+            /// </summary>
+            /// <returns>
+            /// An <see cref="IItemContainerGenerator"/> or null.
+            /// </returns>
             protected override IItemContainerGenerator CreateItemContainerGenerator()
             {
                 return new ItemContainerGenerator<TestItem>(this, TestItem.ContentProperty, null);

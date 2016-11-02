@@ -7,6 +7,10 @@ namespace Avalonia.Controls
     using System;
     using System.Reactive.Linq;
     using System.Linq;
+
+    /// <summary>
+    /// Definition of the <see cref="ContextMenu"/> class.
+    /// </summary>
     public class ContextMenu : SelectingItemsControl
     {
         private bool _isOpen;

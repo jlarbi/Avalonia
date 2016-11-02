@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Test" ToolsVersion="4.0">
+  <!-- External references target(s). -->
+  <!-- <Import Project="$(SolutionDir)Targets\XXXXXX.References.Targets" /> -->
+  <!-- Avalonia references. -->
+  <ItemGroup>
+	<ProjectReference Include="$(SolutionDir)src\Avalonia.HtmlRenderer\Avalonia.HtmlRenderer.csproj">
+      <Project>{5fb2b005-0a7f-4dad-add4-3ed01444e63d}</Project>
+      <Name>Avalonia.HtmlRenderer</Name>
+	  <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

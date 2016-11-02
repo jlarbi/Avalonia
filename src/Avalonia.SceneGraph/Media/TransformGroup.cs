@@ -6,6 +6,9 @@ using Avalonia.Metadata;
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="TransformGroup"/> class.
+    /// </summary>
     public class TransformGroup : Transform
     {
         /// <summary>
@@ -14,6 +17,9 @@ namespace Avalonia.Media
         public static readonly AvaloniaProperty<Transforms> ChildrenProperty =
             AvaloniaProperty.Register<TransformGroup, Transforms>(nameof(Children));
 
+        /// <summary>
+        /// Creates a new instance of the <see cref="TransformGroup"/> class.
+        /// </summary>
         public TransformGroup()
         {
             Children = new Transforms();
@@ -51,6 +57,9 @@ namespace Avalonia.Media
         }
     }
 
+    /// <summary>
+    /// Definition of the <see cref="Transforms"/> class containing a set of transforms.
+    /// </summary>
     public sealed class Transforms : AvaloniaList<Transform>
     {
     }

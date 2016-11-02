@@ -6,8 +6,15 @@ using Xunit;
 
 namespace Avalonia.Layout.UnitTests
 {
+    /// <summary>
+    /// Definition of the <see cref="ArrangeTests"/> class.
+    /// </summary>
     public class ArrangeTests
     {
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Margin_Should_Be_Subtracted_From_Arrange_FinalSize()
         {
@@ -24,6 +31,10 @@ namespace Avalonia.Layout.UnitTests
             Assert.Equal(new Size(100, 100), target.ArrangeFinalSize);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void ArrangeOverride_Receives_Desired_Size_When_Centered()
         {
@@ -41,6 +52,10 @@ namespace Avalonia.Layout.UnitTests
             Assert.Equal(new Size(100, 100), target.ArrangeFinalSize);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void ArrangeOverride_Receives_Available_Size_Minus_Margin_When_Stretched()
         {
@@ -58,6 +73,10 @@ namespace Avalonia.Layout.UnitTests
             Assert.Equal(new Size(184, 184), target.ArrangeFinalSize);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void ArrangeOverride_Receives_Requested_Size_When_Arranged_To_DesiredSize()
         {
@@ -75,6 +94,10 @@ namespace Avalonia.Layout.UnitTests
             Assert.Equal(new Size(100, 100), target.ArrangeFinalSize);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Arrange_With_IsMeasureValid_False_Calls_Measure()
         {
@@ -86,6 +109,10 @@ namespace Avalonia.Layout.UnitTests
             Assert.Equal(new Size(120, 120), target.MeasureConstraint);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Arrange_With_IsMeasureValid_False_Calls_Measure_With_Previous_Size_If_Available()
         {
@@ -99,6 +126,9 @@ namespace Avalonia.Layout.UnitTests
             Assert.Equal(new Size(120, 120), target.MeasureConstraint);
         }
 
+        /// <summary>
+        /// Definition of the <see cref="TestControl"/> class.
+        /// </summary>
         private class TestControl : Decorator
         {
             public Size MeasureConstraint { get; private set; }
@@ -107,6 +137,11 @@ namespace Avalonia.Layout.UnitTests
 
             public Size ArrangeFinalSize { get; private set; }
 
+            /// <summary>
+            /// Measures the control and its child elements as part of a layout pass.
+            /// </summary>
+            /// <param name="constraint">The size available to the control.</param>
+            /// <returns>The desired size for the control.</returns>
             protected override Size MeasureOverride(Size constraint)
             {
                 MeasureConstraint = constraint;

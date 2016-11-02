@@ -8,6 +8,9 @@ using Avalonia.Media.Imaging;
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="DrawingContext"/> class.
+    /// </summary>
     public sealed class DrawingContext : IDisposable
     {
         private readonly IDrawingContextImpl _impl;
@@ -15,9 +18,7 @@ namespace Avalonia.Media
         //Internal tranformation that is applied but not exposed anywhere
         //To be used for DPI scaling, etc
         private Matrix? _hiddenPostTransform = Matrix.Identity;
-
         
-
         static readonly Stack<Stack<PushedState>> StateStackPool = new Stack<Stack<PushedState>>();
         static readonly Stack<Stack<TransformContainer>> TransformStackPool = new Stack<Stack<TransformContainer>>();
 
@@ -39,13 +40,17 @@ namespace Avalonia.Media
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DrawingContext"/> class.
+        /// </summary>
+        /// <param name="impl"></param>
+        /// <param name="hiddenPostTransform"></param>
         public DrawingContext(IDrawingContextImpl impl, Matrix? hiddenPostTransform = null)
         {
             _impl = impl;
             _hiddenPostTransform = hiddenPostTransform;
         }
-
-
+        
         private Matrix _currentTransform = Matrix.Identity;
 
         private Matrix _currentContainerTransform = Matrix.Identity;
@@ -124,6 +129,9 @@ namespace Avalonia.Media
         public void FillRectangle(IBrush brush, Rect rect, float cornerRadius = 0.0f)
             => _impl.FillRectangle(brush, rect, cornerRadius);
 
+        /// <summary>
+        /// Definition of the <see cref="PushedState"/> structure.
+        /// </summary>
         public struct PushedState : IDisposable
         {
             private readonly int _level;
@@ -131,17 +139,53 @@ namespace Avalonia.Media
             private readonly Matrix _matrix;
             private readonly PushedStateType _type;
 
+            /// <summary>
+            /// Definition of the <see cref="PushedStateType"/> enumeration.
+            /// </summary>
             public enum PushedStateType
             {
+                /// <summary>
+                /// Nothing pushed.
+                /// </summary>
                 None,
+
+                /// <summary>
+                /// Matrix changed pushed.
+                /// </summary>
                 Matrix,
+
+                /// <summary>
+                /// Opacity changed pushed.
+                /// </summary>
                 Opacity,
+
+                /// <summary>
+                /// Clip changed pushed.
+                /// </summary>
                 Clip,
+
+                /// <summary>
+                /// Matrix container pushed.
+                /// </summary>
                 MatrixContainer,
+
+                /// <summary>
+                /// Geometry clip changed pushed.
+                /// </summary>
                 GeometryClip,
+
+                /// <summary>
+                /// Opacity mask changed pushed.
+                /// </summary>
                 OpacityMask
             }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="PushedState"/> class.
+            /// </summary>
+            /// <param name="context"></param>
+            /// <param name="type"></param>
+            /// <param name="matrix"></param>
             public PushedState(DrawingContext context, PushedStateType type, Matrix matrix = default(Matrix))
             {
                 _context = context;
@@ -151,6 +195,9 @@ namespace Avalonia.Media
                 context._states.Push(this);
             }
 
+            /// <summary>
+            /// Releases resources.
+            /// </summary>
             public void Dispose()
             {
                 if(_type == PushedStateType.None)

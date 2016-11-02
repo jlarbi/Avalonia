@@ -11,11 +11,17 @@ using Avalonia.VisualTree;
 
 namespace Avalonia.Benchmarks.Styling
 {
+    /// <summary>
+    /// Definition of the <see cref="ApplyStyling"/> class.
+    /// </summary>
     public class ApplyStyling : IDisposable
     {
         private IDisposable _app;
         private Window _window;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApplyStyling"/> class.
+        /// </summary>
         public ApplyStyling()
         {
             _app = UnitTestApplication.Start(TestServices.StyledWindow);
@@ -52,11 +58,18 @@ namespace Avalonia.Benchmarks.Styling
             }
         }
 
+        /// <summary>
+        /// Releases resources.
+        /// </summary>
         public void Dispose()
         {
             _app.Dispose();
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Benchmark]
         public void Add_And_Style_TextBox()
         {

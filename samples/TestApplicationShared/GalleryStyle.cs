@@ -13,8 +13,14 @@ using System.Threading.Tasks;
 
 namespace TestApplication
 {
+    /// <summary>
+    /// Definition of the <see cref="SampleTabStyle"/> class.
+    /// </summary>
     internal class SampleTabStyle : Styles
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SampleTabStyle"/> class.
+        /// </summary>
         public SampleTabStyle()
         {
             this.AddRange(new[]
@@ -55,6 +61,12 @@ namespace TestApplication
             });
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        // TO DO: Comment...
         public static Control TabStripItemTemplate(TabStripItem control)
         {
             return new ContentPresenter
@@ -77,6 +89,12 @@ namespace TestApplication
             };
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        // TO DO: Comment...
         public static Control TabControlTemplate(TabControl control)
         {
             return new Grid

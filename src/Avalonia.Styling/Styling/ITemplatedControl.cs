@@ -5,6 +5,9 @@ using System;
 
 namespace Avalonia.Styling
 {
+    /// <summary>
+    /// Definition of the <see cref="ITemplatedControl"/> interface.
+    /// </summary>
     public interface ITemplatedControl : IAvaloniaObject
     {
     }

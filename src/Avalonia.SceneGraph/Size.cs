@@ -119,11 +119,23 @@ namespace Avalonia
             return new Size(size._width / scale, size._height / scale);
         }
 
+        /// <summary>
+        /// Adds two size together.
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="toAdd"></param>
+        /// <returns></returns>
         public static Size operator +(Size size, Size toAdd)
         {
             return new Size(size._width + toAdd._width, size._height + toAdd._height);
         }
 
+        /// <summary>
+        /// Subtracts two size together.
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="toSubstract"></param>
+        /// <returns></returns>
         public static Size operator -(Size size, Size toSubstract)
         {
             return new Size(size._width - toSubstract._width, size._height - toSubstract._height);

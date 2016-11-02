@@ -10,8 +10,21 @@ using DWrite = SharpDX.DirectWrite;
 
 namespace Avalonia.Direct2D1.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="FormattedTextImpl"/> class.
+    /// </summary>
     public class FormattedTextImpl : IFormattedTextImpl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormattedTextImpl"/> class.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="fontFamily"></param>
+        /// <param name="fontSize"></param>
+        /// <param name="fontStyle"></param>
+        /// <param name="textAlignment"></param>
+        /// <param name="fontWeight"></param>
+        /// <param name="wrapping"></param>
         public FormattedTextImpl(
             string text,
             string fontFamily,
@@ -44,6 +57,9 @@ namespace Avalonia.Direct2D1.Media
             TextLayout.TextAlignment = textAlignment.ToDirect2D();
         }
 
+        /// <summary>
+        /// Gets or sets the constraint size.
+        /// </summary>
         public Size Constraint
         {
             get
@@ -58,19 +74,34 @@ namespace Avalonia.Direct2D1.Media
             }
         }
 
+        /// <summary>
+        /// Gets the text layout.
+        /// </summary>
         public DWrite.TextLayout TextLayout { get; }
 
+        /// <summary>
+        /// Releases resources.
+        /// </summary>
         public void Dispose()
         {
             TextLayout.Dispose();
         }
 
+        /// <summary>
+        /// Gets the formatted text lines.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<FormattedTextLine> GetLines()
         {
             var result = TextLayout.GetLineMetrics();
             return from line in result select new FormattedTextLine(line.Length, line.Height);
         }
 
+        /// <summary>
+        /// Checks whether the point hit the formatted text element.
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
         public TextHitTestResult HitTestPoint(Point point)
         {
             SharpDX.Mathematics.Interop.RawBool isTrailingHit;
@@ -90,6 +121,12 @@ namespace Avalonia.Direct2D1.Media
             };
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        // TO DO: Comment...
         public Rect HitTestTextPosition(int index)
         {
             float x;
@@ -104,12 +141,23 @@ namespace Avalonia.Direct2D1.Media
             return new Rect(result.Left, result.Top, result.Width, result.Height);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        // TO DO: Comment...
         public IEnumerable<Rect> HitTestTextRange(int index, int length)
         {
             var result = TextLayout.HitTestTextRange(index, length, 0, 0);
             return result.Select(x => new Rect(x.Left, x.Top, x.Width, x.Height));
         }
 
+        /// <summary>
+        /// Measures the formatted text element.
+        /// </summary>
+        /// <returns></returns>
         public Size Measure()
         {
             var metrics = TextLayout.Metrics;
@@ -123,6 +171,12 @@ namespace Avalonia.Direct2D1.Media
             return new Size(width, TextLayout.Metrics.Height);
         }
 
+        /// <summary>
+        /// Set the brush used to draw the foreground part of the text element.
+        /// </summary>
+        /// <param name="brush"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="count"></param>
         public void SetForegroundBrush(IBrush brush, int startIndex, int count)
         {
             TextLayout.SetDrawingEffect(

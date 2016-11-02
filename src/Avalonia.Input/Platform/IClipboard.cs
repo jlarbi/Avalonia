@@ -9,12 +9,28 @@ using System.Threading.Tasks;
 
 namespace Avalonia.Input.Platform
 {
+    /// <summary>
+    /// Definition of the <see cref="IClipboard"/> interface.
+    /// </summary>
     public interface IClipboard
     {
+        /// <summary>
+        /// Gets the text
+        /// </summary>
+        /// <returns></returns>
         Task<string> GetTextAsync();
 
+        /// <summary>
+        /// Sets the text
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         Task SetTextAsync(string text);
 
+        /// <summary>
+        /// Clears.
+        /// </summary>
+        /// <returns></returns>
         Task ClearAsync();
     }
 }

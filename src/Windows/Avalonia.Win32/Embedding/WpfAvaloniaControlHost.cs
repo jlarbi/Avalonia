@@ -13,11 +13,17 @@ using Avalonia.Win32.Interop;
 
 namespace Avalonia.Win32.Embedding
 {
+    /// <summary>
+    /// Definition of the <see cref="WpfAvaloniaControlHost"/> class.
+    /// </summary>
     public class WpfAvaloniaControlHost : HwndHost
     {
         private WinFormsAvaloniaControlHost _host;
         private Avalonia.Controls.Control _content;
 
+        /// <summary>
+        /// Gets or sets the content.
+        /// </summary>
         public Avalonia.Controls.Control Content
         {
             get { return _content; }
@@ -36,6 +42,11 @@ namespace Avalonia.Win32.Embedding
             _host = null;
         }
 
+        /// <summary>
+        /// Builds the window.
+        /// </summary>
+        /// <param name="hwndParent"></param>
+        /// <returns></returns>
         protected override HandleRef BuildWindowCore(HandleRef hwndParent)
         {
             DestroyHost();
@@ -44,6 +55,10 @@ namespace Avalonia.Win32.Embedding
             return new HandleRef(this, _host.Handle);
         }
 
+        /// <summary>
+        /// Destroys the window.
+        /// </summary>
+        /// <param name="hwnd"></param>
         protected override void DestroyWindowCore(HandleRef hwnd)
         {
             DestroyHost();

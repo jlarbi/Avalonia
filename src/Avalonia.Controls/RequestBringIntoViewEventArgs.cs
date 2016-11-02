@@ -6,10 +6,19 @@ using Avalonia.VisualTree;
 
 namespace Avalonia.Controls
 {
+    /// <summary>
+    /// Definition of the <see cref="RequestBringIntoViewEventArgs"/> class.
+    /// </summary>
     public class RequestBringIntoViewEventArgs : RoutedEventArgs
     {
+        /// <summary>
+        /// Gets or sets the visual target object.
+        /// </summary>
         public IVisual TargetObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the target region.
+        /// </summary>
         public Rect TargetRect { get; set; }
     }
 }

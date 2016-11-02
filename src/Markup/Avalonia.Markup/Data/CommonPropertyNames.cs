@@ -3,8 +3,14 @@
 
 namespace Avalonia.Markup.Data
 {
+    /// <summary>
+    /// Definition of the <see cref="CommonPropertyNames"/> class.
+    /// </summary>
     public static class CommonPropertyNames
     {
+        /// <summary>
+        /// Constant indexer name.
+        /// </summary>
         public const string IndexerName = "Item";
     }
 }

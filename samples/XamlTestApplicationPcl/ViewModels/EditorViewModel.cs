@@ -10,8 +10,14 @@ namespace XamlTestApplication.ViewModels
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Definition of the <see cref="ShellViewModel"/> class.
+    /// </summary>
     public class ShellViewModel : ReactiveObject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ShellViewModel"/> class.
+        /// </summary>
         private ShellViewModel()
         {
             documents = new ObservableCollection<EditorViewModel>();
@@ -29,9 +35,16 @@ namespace XamlTestApplication.ViewModels
             });
         }
 
+        /// <summary>
+        /// Gets the <see cref="ShellViewModel"/> instance.
+        /// </summary>
         public static ShellViewModel Instance = new ShellViewModel();
 
         private ObservableCollection<EditorViewModel> documents;
+
+        /// <summary>
+        /// Gets or sets the view modle documents.
+        /// </summary>
         public ObservableCollection<EditorViewModel> Documents
         {
             get { return documents; }
@@ -40,6 +53,9 @@ namespace XamlTestApplication.ViewModels
 
         private EditorViewModel selectedDocument;
 
+        /// <summary>
+        /// Gets or sets the selected document.
+        /// </summary>
         public EditorViewModel SelectedDocument
         {
             get { return selectedDocument; }
@@ -48,22 +64,36 @@ namespace XamlTestApplication.ViewModels
 
         private int instanceCount;
 
+        /// <summary>
+        /// Gets or sets the instance count.
+        /// </summary>
         public int InstanceCount
         {
             get { return instanceCount; }
             set { this.RaiseAndSetIfChanged(ref instanceCount, value); }
         }
 
-
-
+        /// <summary>
+        /// Gets a document command.
+        /// </summary>
         public ReactiveCommand<object> AddDocumentCommand { get; }
+
+        /// <summary>
+        /// Gets a GC command.
+        /// </summary>
         public ReactiveCommand<object> GCCommand { get; }
     }
 
+    /// <summary>
+    /// Definition of the <see cref="EditorViewModel"/> class.
+    /// </summary>
     public class EditorViewModel : ReactiveObject
     {
         private static int InstanceCount = 0;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EditorViewModel"/> class.
+        /// </summary>
         public EditorViewModel()
         {
             InstanceCount++;
@@ -78,6 +108,9 @@ namespace XamlTestApplication.ViewModels
             });
         }
 
+        /// <summary>
+        /// Destroys the instance.
+        /// </summary>
         ~EditorViewModel()
         {
             
@@ -92,12 +125,19 @@ namespace XamlTestApplication.ViewModels
         }
 
         private string text;
+
+        /// <summary>
+        /// Gets or sets the text.
+        /// </summary>
         public string Text
         {
             get { return text; }
             set { this.RaiseAndSetIfChanged(ref text, value); }
         }
 
+        /// <summary>
+        /// Gets a new close command.
+        /// </summary>
         public ReactiveCommand<object> CloseCommand { get; }
     }
 }

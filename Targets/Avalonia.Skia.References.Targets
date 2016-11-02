@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Test" ToolsVersion="4.0">
+  <!-- External references target(s). -->
+  <!-- <Import Project="$(SolutionDir)Targets\XXXXXX.References.Targets" /> -->
+  <!-- Avalonia references. Skia base reference(s) -->
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)src\Skia\Avalonia.Skia.Desktop\Avalonia.Skia.Desktop.csproj">
+      <Project>{925dd807-b651-475f-9f7c-cbeb974ce43d}</Project>
+      <Name>Avalonia.Skia.Desktop</Name>
+	  <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

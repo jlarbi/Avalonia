@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Test" ToolsVersion="4.0">
+  <!-- External references target(s). -->
+  <!-- <Import Project="$(SolutionDir)Targets\XXXXXX.References.Targets" /> -->
+  <!-- Avalonia references. -->
+  <ItemGroup>
+	<ProjectReference Include="$(SolutionDir)src\Avalonia.Styling\Avalonia.Styling.csproj">
+      <Project>{F1BAA01A-F176-4C6A-B39D-5B40BB1B148F}</Project>
+      <Name>Avalonia.Styling</Name>
+	  <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

@@ -5,8 +5,17 @@ using System.Linq;
 
 namespace Avalonia.Direct2D1.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="RadialGradientBrushImpl"/> class.
+    /// </summary>
     public class RadialGradientBrushImpl : BrushImpl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RadialGradientBrushImpl"/> class.
+        /// </summary>
+        /// <param name="brush"></param>
+        /// <param name="target"></param>
+        /// <param name="destinationSize"></param>
         public RadialGradientBrushImpl(
             Avalonia.Media.RadialGradientBrush brush,
             SharpDX.Direct2D1.RenderTarget target,

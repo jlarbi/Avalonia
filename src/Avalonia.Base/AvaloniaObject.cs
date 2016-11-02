@@ -169,8 +169,16 @@ namespace Avalonia
             }
         }
 
+        /// <summary>
+        /// Checks whether on the Owner thread or not.
+        /// </summary>
+        /// <returns>True if on the owner thread.</returns>
         public bool CheckAccess() => Dispatcher.UIThread.CheckAccess();
 
+        /// <summary>
+        /// Verify whether on the Owner thread or not and throw accordingly.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Triggered if not on the owner thread.</exception>
         public void VerifyAccess() => Dispatcher.UIThread.VerifyAccess();
 
         /// <summary>

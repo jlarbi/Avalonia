@@ -71,6 +71,9 @@ namespace Avalonia.Media
         /// <param name="clip">The clip rectangle.</param>
         void PushClip(Rect clip);
 
+        /// <summary>
+        /// Pops a clic change info.
+        /// </summary>
         void PopClip();
 
         /// <summary>
@@ -79,10 +82,21 @@ namespace Avalonia.Media
         /// <param name="opacity">The opacity.</param>
         void PushOpacity(double opacity);
 
+        /// <summary>
+        /// Pops an opacity change info.
+        /// </summary>
         void PopOpacity();
 
+        /// <summary>
+        /// Pushes an opacity mask change info.
+        /// </summary>
+        /// <param name="mask"></param>
+        /// <param name="bounds"></param>
         void PushOpacityMask(IBrush mask, Rect bounds);
 
+        /// <summary>
+        /// Pops an opacity mask change info.
+        /// </summary>
         void PopOpacityMask();
 
         /// <summary>
@@ -91,6 +105,9 @@ namespace Avalonia.Media
         /// <param name="clip">The clip geometry.</param>
         void PushGeometryClip(Geometry clip);
 
+        /// <summary>
+        /// Pops a geometry clip change info.
+        /// </summary>
         void PopGeometryClip();
     }
 }

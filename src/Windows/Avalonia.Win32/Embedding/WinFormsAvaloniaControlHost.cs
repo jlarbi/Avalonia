@@ -10,11 +10,17 @@ using WinFormsControl = System.Windows.Forms.Control;
 
 namespace Avalonia.Win32.Embedding
 {
+    /// <summary>
+    /// Definition fo the <see cref="WinFormsAvaloniaControlHost"/> class.
+    /// </summary>
     [ToolboxItem(true)]
     public class WinFormsAvaloniaControlHost : WinFormsControl
     {
         private readonly EmbeddableControlRoot _root = new EmbeddableControlRoot();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WinFormsAvaloniaControlHost"/> class.
+        /// </summary>
         public WinFormsAvaloniaControlHost()
         {
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
@@ -27,12 +33,18 @@ namespace Avalonia.Win32.Embedding
             FixPosition();
         }
 
+        /// <summary>
+        /// Gets or sets the content.
+        /// </summary>
         public Avalonia.Controls.Control Content
         {
             get { return (Avalonia.Controls.Control)_root.Content; }
             set { _root.Content = value; }
         }
 
+        /// <summary>
+        /// Stop focusing the control.
+        /// </summary>
         void Unfocus()
         {
             var focused = (IVisual)FocusManager.Instance.Current;
@@ -50,6 +62,10 @@ namespace Avalonia.Win32.Embedding
             Unfocus();
         }
 
+        /// <summary>
+        /// Releases resources.
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -62,6 +78,10 @@ namespace Avalonia.Win32.Embedding
             UnmanagedMethods.SetFocus(_root.PlatformImpl.Handle.Handle);
         }
 
+        /// <summary>
+        /// Called when got focus event occurs.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnGotFocus(EventArgs e)
         {
             if (_root != null)
@@ -75,14 +95,20 @@ namespace Avalonia.Win32.Embedding
                 UnmanagedMethods.MoveWindow(_root.PlatformImpl.Handle.Handle, 0, 0, Width, Height, true);
         }
 
-
-
+        /// <summary>
+        /// Raises the System.Windows.Forms.Control.Resize event.
+        /// </summary>
+        /// <param name="e">The event arguments.</param>
         protected override void OnResize(EventArgs e)
         {
             FixPosition();
             base.OnResize(e);
         }
 
+        /// <summary>
+        /// Delegate called on control paint.
+        /// </summary>
+        /// <param name="e">The event arguments.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
 

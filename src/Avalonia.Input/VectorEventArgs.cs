@@ -6,8 +6,14 @@ using Avalonia.Interactivity;
 
 namespace Avalonia.Input
 {
+    /// <summary>
+    /// Definition of the <see cref="VectorEventArgs"/> class.
+    /// </summary>
     public class VectorEventArgs : RoutedEventArgs
     {
+        /// <summary>
+        /// Gets or sets the vector.
+        /// </summary>
         public Vector Vector { get; set; }
     }
 }

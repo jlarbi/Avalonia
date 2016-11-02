@@ -336,13 +336,17 @@ namespace Avalonia.Controls
         /// <inheritdoc/>
         IStyleHost IStyleHost.StylingParent => (IStyleHost)InheritanceParent;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Starts initializating
+        /// </summary>
         public virtual void BeginInit()
         {
             ++_initCount;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Ends initializing.
+        /// </summary>
         public virtual void EndInit()
         {
             if (_initCount == 0)
@@ -534,7 +538,11 @@ namespace Avalonia.Controls
             DetachedFromLogicalTree?.Invoke(this, e);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Delegate called on attached from visual tree event 
+        /// for this control and all of its visual descendents.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected sealed override void OnAttachedToVisualTreeCore(VisualTreeAttachmentEventArgs e)
         {
             base.OnAttachedToVisualTreeCore(e);
@@ -546,7 +554,11 @@ namespace Avalonia.Controls
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Delegate called on detached from visual tree event 
+        /// for this control and all of its visual descendents.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected sealed override void OnDetachedFromVisualTreeCore(VisualTreeAttachmentEventArgs e)
         {
             base.OnDetachedFromVisualTreeCore(e);
@@ -567,7 +579,10 @@ namespace Avalonia.Controls
             DataContextChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called before the <see cref="InputElement.GotFocus"/> event occurs.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnGotFocus(GotFocusEventArgs e)
         {
             base.OnGotFocus(e);
@@ -604,7 +619,10 @@ namespace Avalonia.Controls
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called before the <see cref="InputElement.LostFocus"/> event occurs.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnLostFocus(RoutedEventArgs e)
         {
             base.OnLostFocus(e);
@@ -639,6 +657,11 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Finds the style root element.
+        /// </summary>
+        /// <param name="e">The style host.</param>
+        /// <returns>The style root, null otherwise.</returns>
         private static IStyleRoot FindStyleRoot(IStyleHost e)
         {
             while (e != null)
@@ -656,11 +679,17 @@ namespace Avalonia.Controls
             return null;
         }
 
+        /// <summary>
+        /// Applies the style.
+        /// </summary>
         private void ApplyStyling()
         {
             AvaloniaLocator.Current.GetService<IStyler>()?.ApplyStyles(this);
         }
 
+        /// <summary>
+        /// Registers the element to the proper name scope.
+        /// </summary>
         private void RegisterWithNameScope()
         {
             if (_nameScope == null)
@@ -674,6 +703,10 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Validates the given logical child.
+        /// </summary>
+        /// <param name="c">The child to validate.</param>
         private static void ValidateLogicalChild(ILogical c)
         {
             if (c == null)
@@ -682,6 +715,10 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Internal method called when the control is added to a rooted logical tree.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         private void OnAttachedToLogicalTreeCore(LogicalTreeAttachmentEventArgs e)
         {
             // This method can be called when a control is already attached to the logical tree
@@ -710,6 +747,10 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Internal method called when the control is removed from a rooted logical tree.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         private void OnDetachedFromLogicalTreeCore(LogicalTreeAttachmentEventArgs e)
         {
             if (_isAttachedToLogicalTree)
@@ -741,6 +782,11 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Delegate called on logical children collection changes.
+        /// </summary>
+        /// <param name="sender">The collection owner.</param>
+        /// <param name="e">The collection changed event arguments.</param>
         private void LogicalChildrenCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
@@ -763,6 +809,10 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Sets a new logical parent to the given set of children.
+        /// </summary>
+        /// <param name="children">The children to reparent.</param>
         private void SetLogicalParent(IEnumerable<ILogical> children)
         {
             foreach (var i in children)
@@ -774,6 +824,10 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Clears the logical parent of the given set of children.
+        /// </summary>
+        /// <param name="children">The children the parent must be removed for.</param>
         private void ClearLogicalParent(IEnumerable<ILogical> children)
         {
             foreach (var i in children)

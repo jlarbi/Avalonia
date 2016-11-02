@@ -6,8 +6,15 @@ using Xunit;
 
 namespace Avalonia.Layout.UnitTests
 {
+    /// <summary>
+    /// Definition of the <see cref="MeasureTests"/> class.
+    /// </summary>
     public class MeasureTests
     {
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Margin_Should_Be_Included_In_DesiredSize()
         {
@@ -23,6 +30,10 @@ namespace Avalonia.Layout.UnitTests
             Assert.Equal(new Size(116, 116), decorator.DesiredSize);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Invalidating_Child_Should_Not_Invalidate_Parent()
         {
@@ -44,6 +55,10 @@ namespace Avalonia.Layout.UnitTests
             Assert.Equal(new Size(0, 0), panel.DesiredSize);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Removing_From_Parent_Should_Invalidate_Measure_Of_Control_And_Descendents()
         {
@@ -61,6 +76,10 @@ namespace Avalonia.Layout.UnitTests
             Assert.False(child2.IsMeasureValid);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Negative_Margin_Larger_Than_Constraint_Should_Request_Width_0()
         {
@@ -81,6 +100,10 @@ namespace Avalonia.Layout.UnitTests
             Assert.Equal(0, target.DesiredSize.Width);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Negative_Margin_Larger_Than_Constraint_Should_Request_Height_0()
         {

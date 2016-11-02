@@ -17,6 +17,11 @@ namespace Avalonia.Utilities
         private KeyValuePair<TKey, TValue>? _singleValue;
         private Dictionary<TKey, TValue> dictionary;
 
+        /// <summary>
+        /// Adds a new key/value pair.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void Add(TKey key, TValue value)
         {
             if (_singleValue != null)
@@ -36,6 +41,12 @@ namespace Avalonia.Utilities
             }
         }
 
+        /// <summary>
+        /// Attempts to retrieve a value from its key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The resulting value of found, null otherwise.</param>
+        /// <returns>True if found, false otherwise.</returns>
         public bool TryGetValue(TKey key, out TValue value)
         {
             if (dictionary == null)
@@ -57,6 +68,10 @@ namespace Avalonia.Utilities
             }
         }
 
+        /// <summary>
+        /// Gets the container enumerator.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
         {
             if (dictionary == null)
@@ -73,11 +88,18 @@ namespace Avalonia.Utilities
             return Enumerable.Empty<KeyValuePair<TKey, TValue>>().GetEnumerator();
         }
 
+        /// <summary>
+        /// Gets the container enumerator.
+        /// </summary>
+        /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
 
+        /// <summary>
+        /// Gets all values.
+        /// </summary>
         public IEnumerable<TValue> Values
         {
             get
@@ -97,16 +119,27 @@ namespace Avalonia.Utilities
             }
         }
 
+        /// <summary>
+        /// Definition of the <see cref="SingleEnumerator{T}"/> class.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         private class SingleEnumerator<T> : IEnumerator<T>
         {
             private T value;
             private int index = -1;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="SingleEnumerator{T}"/> class.
+            /// </summary>
+            /// <param name="value"></param>
             public SingleEnumerator(T value)
             {
                 this.value = value;
             }
 
+            /// <summary>
+            /// Gets the current object.
+            /// </summary>
             public T Current
             {
                 get
@@ -122,18 +155,31 @@ namespace Avalonia.Utilities
                 }
             }
 
+            /// <summary>
+            /// Gets the current object.
+            /// </summary>
             object IEnumerator.Current => Current;
 
+            /// <summary>
+            /// Releases resources.
+            /// </summary>
             public void Dispose()
             {
             }
 
+            /// <summary>
+            /// Moves to the next object.
+            /// </summary>
+            /// <returns></returns>
             public bool MoveNext()
             {
                 index++;
                 return index < 1;
             }
 
+            /// <summary>
+            /// Resets the iterator.
+            /// </summary>
             public void Reset()
             {
                 index = -1;

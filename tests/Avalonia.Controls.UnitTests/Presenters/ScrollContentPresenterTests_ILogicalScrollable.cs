@@ -347,6 +347,11 @@ namespace Avalonia.Controls.UnitTests
                 throw new NotImplementedException();
             }
 
+            /// <summary>
+            /// Measures the control and its child elements as part of a layout pass.
+            /// </summary>
+            /// <param name="availableSize">The size available to the control.</param>
+            /// <returns>The desired size for the control.</returns>
             protected override Size MeasureOverride(Size availableSize)
             {
                 AvailableSize = availableSize;

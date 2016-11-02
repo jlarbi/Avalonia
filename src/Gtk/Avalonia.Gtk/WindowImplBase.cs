@@ -17,19 +17,33 @@ namespace Avalonia.Gtk
 {
     using Gtk = global::Gtk;
 
+    /// <summary>
+    /// Definition of the <see cref="WindowImplBase"/> class.
+    /// </summary>
     public abstract class WindowImplBase : IWindowImpl
     {
         private IInputRoot _inputRoot;
+
+        /// <summary>
+        /// Stores the window.
+        /// </summary>
         protected Gtk.Widget _window;
+
+        /// <summary>
+        /// Gets the window.
+        /// </summary>
         public Gtk.Widget Widget => _window;
-
-
+        
         private Gtk.IMContext _imContext;
 
         private uint _lastKeyEventTimestamp;
 
         private static readonly Gdk.Cursor DefaultCursor = new Gdk.Cursor(CursorType.LeftPtr);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowImplBase"/> class.
+        /// </summary>
+        /// <param name="window"></param>
         protected WindowImplBase(Gtk.Widget window)
         {
             _window = window;
@@ -56,16 +70,29 @@ namespace Avalonia.Gtk
             
         }
 
+        /// <summary>
+        /// Gets the platform-specific handle.
+        /// </summary>
         public IPlatformHandle Handle { get; private set; }
 
+        /// <summary>
+        /// Delegate called on window realized.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
         void OnRealized (object sender, EventArgs eventArgs)
         {
             _imContext.ClientWindow = _window.GdkWindow;
         }
 
+        /// <summary>
+        /// Gets or sets the window client size.
+        /// </summary>
         public abstract Size ClientSize { get; set; }
 
-
+        /// <summary>
+        /// Gets the maximum client size.
+        /// </summary>
         public Size MaxClientSize
         {
             get
@@ -76,6 +103,9 @@ namespace Avalonia.Gtk
             }
         }
 
+        /// <summary>
+        /// Gets or sets the window state.
+        /// </summary>
         public Avalonia.Controls.WindowState WindowState
         {
             get
@@ -109,29 +139,64 @@ namespace Avalonia.Gtk
             }
         }
 
+        /// <summary>
+        /// Gets the window scaling.
+        /// </summary>
         public double Scaling => 1;
 
+        /// <summary>
+        /// Gets or sets the callback to call on window activated.
+        /// </summary>
         public Action Activated { get; set; }
 
+        /// <summary>
+        /// Gets or sets the callback to call on window closed.
+        /// </summary>
         public Action Closed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the callback to call on window deactivated.
+        /// </summary>
         public Action Deactivated { get; set; }
 
+        /// <summary>
+        /// Gets or sets the callback to call on window inputs.
+        /// </summary>
         public Action<RawInputEventArgs> Input { get; set; }
 
+        /// <summary>
+        /// Gets or sets the callback to call on window paint.
+        /// </summary>
         public Action<Rect> Paint { get; set; }
 
+        /// <summary>
+        /// Gets or sets the callback to call on window resized.
+        /// </summary>
         public Action<Size> Resized { get; set; }
-		
+
+        /// <summary>
+        /// Gets or sets the callback to call on window position changed.
+        /// </summary>
         public Action<Point> PositionChanged { get; set; }
 
+        /// <summary>
+        /// Gets or sets the callback to call on window scaling changed.
+        /// </summary>
         public Action<double> ScalingChanged { get; set; }
 
+        /// <summary>
+        /// Creates a new pop up.
+        /// </summary>
+        /// <returns></returns>
         public IPopupImpl CreatePopup()
         {
             return new PopupImpl();
         }
 
+        /// <summary>
+        /// Invalidates the given window region.
+        /// </summary>
+        /// <param name="rect"></param>
         public void Invalidate(Rect rect)
         {
             if (_window?.GdkWindow != null)
@@ -139,6 +204,11 @@ namespace Avalonia.Gtk
                     new Rectangle((int) rect.X, (int) rect.Y, (int) rect.Width, (int) rect.Height), true);
         }
 
+        /// <summary>
+        /// Turns a point from screen space to client space.
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
         public Point PointToClient(Point point)
         {
             int x, y;
@@ -147,6 +217,11 @@ namespace Avalonia.Gtk
             return new Point(point.X - x, point.Y - y);
         }
 
+        /// <summary>
+        /// Turns a point from client space to screen space.
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
         public Point PointToScreen(Point point)
         {
             int x, y;
@@ -154,27 +229,72 @@ namespace Avalonia.Gtk
             return new Point(point.X + x, point.Y + y);
         }
 
+        /// <summary>
+        /// Sets the input root element.
+        /// </summary>
+        /// <param name="inputRoot"></param>
         public void SetInputRoot(IInputRoot inputRoot)
         {
             _inputRoot = inputRoot;
         }
 
+        /// <summary>
+        /// Sets teh window title.
+        /// </summary>
+        /// <param name="title"></param>
         public abstract void SetTitle(string title);
+
+        /// <summary>
+        /// Show a dialog pop up.
+        /// </summary>
+        /// <returns></returns>
         public abstract IDisposable ShowDialog();
+
+        /// <summary>
+        /// Set system decorations.
+        /// </summary>
+        /// <param name="enabled"></param>
         public abstract void SetSystemDecorations(bool enabled);
+
+        /// <summary>
+        /// Set the window icon.
+        /// </summary>
+        /// <param name="icon"></param>
         public abstract void SetIcon(IWindowIconImpl icon);
 
-
+        /// <summary>
+        /// Sets the cursor.
+        /// </summary>
+        /// <param name="cursor"></param>
         public void SetCursor(IPlatformHandle cursor)
         {
             _window.GdkWindow.Cursor = cursor != null ? new Gdk.Cursor(cursor.Handle) : DefaultCursor;
         }
 
+        /// <summary>
+        /// Shows the windo up to the screen.
+        /// </summary>
         public void Show() => _window.Show();
 
+        /// <summary>
+        /// Hides the window.
+        /// </summary>
         public void Hide() => _window.Hide();
+
+        /// <summary>
+        /// Starts a drag move.
+        /// </summary>
         public abstract void BeginMoveDrag();
+
+        /// <summary>
+        /// Starts a drag to resize move.
+        /// </summary>
+        /// <param name="edge"></param>
         public abstract void BeginResizeDrag(WindowEdge edge);
+
+        /// <summary>
+        /// Gets or sets the window position.
+        /// </summary>
         public abstract Point Position { get; set; }
 
         void ITopLevelImpl.Activate()
@@ -231,6 +351,11 @@ namespace Avalonia.Gtk
             Input(e);
         }
 
+        /// <summary>
+        /// Delegate called on button release event.
+        /// </summary>
+        /// <param name="o">The button</param>
+        /// <param name="args">The event arguments.</param>
         protected void OnButtonReleaseEvent(object o, Gtk.ButtonReleaseEventArgs args)
         {
             var evnt = args.Event;
@@ -304,6 +429,9 @@ namespace Avalonia.Gtk
             args.RetVal = true;
         }
 
+        /// <summary>
+        /// Releases resources.
+        /// </summary>
         public void Dispose()
         {
             _window.Hide();

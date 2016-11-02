@@ -7,8 +7,14 @@ using Avalonia.Data;
 
 namespace Avalonia.Controls.Primitives
 {
+    /// <summary>
+    /// Definition of the <see cref="ToggleButton"/> class.
+    /// </summary>
     public class ToggleButton : Button
     {
+        /// <summary>
+        /// The Is Checked property.
+        /// </summary>
         public static readonly DirectProperty<ToggleButton, bool> IsCheckedProperty =
             AvaloniaProperty.RegisterDirect<ToggleButton, bool>(
                 "IsChecked",
@@ -18,23 +24,36 @@ namespace Avalonia.Controls.Primitives
 
         private bool _isChecked;
 
+        /// <summary>
+        /// Initializes static member(s) of the <see cref="ToggleButton"/> class.
+        /// </summary>
         static ToggleButton()
         {
             PseudoClass(IsCheckedProperty, ":checked");
         }
 
+        /// <summary>
+        /// Gets or sets the flag indicating whether the toogle button is checked or not.
+        /// </summary>
         public bool IsChecked
         {
             get { return _isChecked; }
             set { SetAndRaise(IsCheckedProperty, ref _isChecked, value); }
         }
 
+        /// <summary>
+        /// Delegate called on button click
+        /// </summary>
+        /// <param name="e">The event arguments.</param>
         protected override void OnClick(RoutedEventArgs e)
         {
             Toggle();
             base.OnClick(e);
         }
 
+        /// <summary>
+        /// Toggles the button.
+        /// </summary>
         protected virtual void Toggle()
         {
             IsChecked = !IsChecked;

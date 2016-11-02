@@ -1,5 +1,8 @@
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="QuadraticBezierSegment"/> class.
+    /// </summary>
     public sealed class QuadraticBezierSegment : PathSegment
     {
         /// <summary>
@@ -38,9 +41,13 @@ namespace Avalonia.Media
             set { SetValue(Point2Property, value); }
         }
 
-        protected internal override void ApplyTo(StreamGeometryContext ctx)
+        /// <summary>
+        /// Applies a new segment to the given one.
+        /// </summary>
+        /// <param name="pContext">The geometry context.</param>
+        protected internal override void ApplyTo(StreamGeometryContext pContext)
         {
-            ctx.QuadraticBezierTo(Point1, Point2);
+            pContext.QuadraticBezierTo(Point1, Point2);
         }
     }
 }

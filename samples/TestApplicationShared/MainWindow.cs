@@ -22,8 +22,12 @@ using TestApplication;
 
 namespace TestApplication
 {
+    /// <summary>
+    /// Definition of the <see cref="MainWindow"/> class.
+    /// </summary>
     class MainWindow
     {
+
         private static readonly AvaloniaList<Node> s_treeData = new AvaloniaList<Node>
         {
             new Node

@@ -9,20 +9,38 @@ using Avalonia.Media;
 
 namespace Avalonia.Controls.Shapes
 {
+    /// <summary>
+    /// Definition of the <see cref="Shape"/> class.
+    /// </summary>
     public abstract class Shape : Control
     {
+        /// <summary>
+        /// The fill property.
+        /// </summary>
         public static readonly StyledProperty<IBrush> FillProperty =
             AvaloniaProperty.Register<Shape, IBrush>("Fill");
 
+        /// <summary>
+        /// The stretch property.
+        /// </summary>
         public static readonly StyledProperty<Stretch> StretchProperty =
             AvaloniaProperty.Register<Shape, Stretch>("Stretch");
 
+        /// <summary>
+        /// The stroke property.
+        /// </summary>
         public static readonly StyledProperty<IBrush> StrokeProperty =
             AvaloniaProperty.Register<Shape, IBrush>("Stroke");
 
+        /// <summary>
+        /// The stroke dash array property.
+        /// </summary>
         public static readonly StyledProperty<AvaloniaList<double>> StrokeDashArrayProperty =
             AvaloniaProperty.Register<Shape, AvaloniaList<double>>("StrokeDashArray");
 
+        /// <summary>
+        /// The stroke thickness property.
+        /// </summary>
         public static readonly StyledProperty<double> StrokeThicknessProperty =
             AvaloniaProperty.Register<Shape, double>("StrokeThickness");
 
@@ -30,12 +48,18 @@ namespace Avalonia.Controls.Shapes
         private Geometry _definingGeometry;
         private Geometry _renderedGeometry;
 
+        /// <summary>
+        /// Initializes static member(s) of the <see cref="Shape"/> class.
+        /// </summary>
         static Shape()
         {
             AffectsMeasure(StretchProperty, StrokeThicknessProperty);
             AffectsRender(FillProperty, StrokeProperty, StrokeDashArrayProperty);
         }
 
+        /// <summary>
+        /// Gets the defining geometry.
+        /// </summary>
         public Geometry DefiningGeometry
         {
             get
@@ -49,12 +73,18 @@ namespace Avalonia.Controls.Shapes
             }
         }
 
+        /// <summary>
+        /// Gets or sets the brush to fill the shape.
+        /// </summary>
         public IBrush Fill
         {
             get { return GetValue(FillProperty); }
             set { SetValue(FillProperty, value); }
         }
 
+        /// <summary>
+        /// Gets the rendered geometry.
+        /// </summary>
         public Geometry RenderedGeometry
         {
             get
@@ -72,38 +102,66 @@ namespace Avalonia.Controls.Shapes
             }
         }
 
+        /// <summary>
+        /// Gets or sets the stretch type.
+        /// </summary>
         public Stretch Stretch
         {
             get { return GetValue(StretchProperty); }
             set { SetValue(StretchProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the brush used to stroke the shape.
+        /// </summary>
         public IBrush Stroke
         {
             get { return GetValue(StrokeProperty); }
             set { SetValue(StrokeProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the stroke dash array.
+        /// </summary>
         public AvaloniaList<double> StrokeDashArray
         {
             get { return GetValue(StrokeDashArrayProperty); }
             set { SetValue(StrokeDashArrayProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the stroke thickness.
+        /// </summary>
         public double StrokeThickness
         {
             get { return GetValue(StrokeThicknessProperty); }
             set { SetValue(StrokeThicknessProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the stroke dash cap type.
+        /// </summary>
         public PenLineCap StrokeDashCap { get; set; } = PenLineCap.Flat;
 
+        /// <summary>
+        /// Gets or sets the stroke start line cap type.
+        /// </summary>
         public PenLineCap StrokeStartLineCap { get; set; } = PenLineCap.Flat;
 
+        /// <summary>
+        /// Gets or sets the stroke end line cap type.
+        /// </summary>
         public PenLineCap StrokeEndLineCap { get; set; } = PenLineCap.Flat;
 
+        /// <summary>
+        /// Gets or sets the stroke join type.
+        /// </summary>
         public PenLineJoin StrokeJoin { get; set; } = PenLineJoin.Miter;
 
+        /// <summary>
+        /// Renders the shape
+        /// </summary>
+        /// <param name="context">The drawing context.</param>
         public override void Render(DrawingContext context)
         {
             var geometry = RenderedGeometry;
@@ -142,8 +200,15 @@ namespace Avalonia.Controls.Shapes
             }
         }
 
+        /// <summary>
+        /// Creates the defining geometry.
+        /// </summary>
+        /// <returns>The geometry.</returns>
         protected abstract Geometry CreateDefiningGeometry();
 
+        /// <summary>
+        /// Invalidates the geometry and measures.
+        /// </summary>
         protected void InvalidateGeometry()
         {
             this._renderedGeometry = null;
@@ -151,6 +216,11 @@ namespace Avalonia.Controls.Shapes
             InvalidateMeasure();
         }
 
+        /// <summary>
+        /// Measures the control and its child elements as part of a layout pass.
+        /// </summary>
+        /// <param name="availableSize">The size available to the control.</param>
+        /// <returns>The desired size for the control.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
             // This should probably use GetRenderBounds(strokeThickness) but then the calculations
@@ -237,6 +307,10 @@ namespace Avalonia.Controls.Shapes
             return new Size(shapeSize.Width * sx, shapeSize.Height * sy);
         }
 
+        /// <summary>
+        /// Invalidates geometry.
+        /// </summary>
+        /// <param name="e"></param>
         private static void AffectsGeometryInvalidate(AvaloniaPropertyChangedEventArgs e)
         {
             var control = e.Sender as Shape;

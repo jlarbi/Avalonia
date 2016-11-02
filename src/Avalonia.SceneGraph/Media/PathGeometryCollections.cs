@@ -5,10 +5,16 @@ using Avalonia.Collections;
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="PathFigures"/> class.
+    /// </summary>
     public sealed class PathFigures : AvaloniaList<PathFigure>
     {
     }
 
+    /// <summary>
+    /// Definition of the <see cref="PathSegments"/> class.
+    /// </summary>
     public sealed class PathSegments : AvaloniaList<PathSegment>
     {
     }

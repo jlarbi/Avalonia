@@ -25,8 +25,15 @@ using Xunit;
 
 namespace Avalonia.Layout.UnitTests
 {
+    /// <summary>
+    /// Definition of the <see cref="FullLayoutTests"/> class.
+    /// </summary>
     public class FullLayoutTests
     {
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Grandchild_Size_Changed()
         {
@@ -66,6 +73,10 @@ namespace Avalonia.Layout.UnitTests
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Test_ScrollViewer_With_TextBlock()
         {

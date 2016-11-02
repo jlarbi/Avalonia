@@ -8,13 +8,22 @@ using Avalonia.VisualTree;
 
 namespace Avalonia.Controls
 {
+    /// <summary>
+    /// Definition of the <see cref="RadioButton"/> class.
+    /// </summary>
     public class RadioButton : ToggleButton
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RadioButton"/> class.
+        /// </summary>
         public RadioButton()
         {
             this.GetObservable(IsCheckedProperty).Subscribe(IsCheckedChanged);
         }
 
+        /// <summary>
+        /// Toggles the button.
+        /// </summary>
         protected override void Toggle()
         {
             if (!IsChecked)
@@ -23,6 +32,10 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Delegate called on Is checked changes.
+        /// </summary>
+        /// <param name="value">The new flag value.</param>
         private void IsCheckedChanged(bool value)
         {
             var parent = this.GetVisualParent();

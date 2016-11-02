@@ -19,6 +19,12 @@ namespace Avalonia.Controls.Platform
         /// <returns>A task returning the selected filenames.</returns>
         Task<string[]> ShowFileDialogAsync(FileDialog dialog, IWindowImpl parent);
 
+        /// <summary>
+        /// Shows a folder dialog.
+        /// </summary>
+        /// <param name="dialog">The details of the folder dialog to show.</param>
+        /// <param name="parent">The parent window.</param>
+        /// <returns>A task returning the selected folders.</returns>
         Task<string> ShowFolderDialogAsync(OpenFolderDialog dialog, IWindowImpl parent);   
     }
 }

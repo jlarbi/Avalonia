@@ -10,8 +10,15 @@ using Xunit;
 
 namespace Avalonia.Interactivity.UnitTests
 {
+    /// <summary>
+    /// Definition of the <see cref="InteractiveTests"/> class.
+    /// </summary>
     public class InteractiveTests
     {
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Direct_Event_Should_Go_Straight_To_Source()
         {
@@ -26,6 +33,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "2b" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Direct_Event_Should_Have_Route_Set_To_Direct()
         {
@@ -46,6 +57,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.True(called);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Bubbling_Event_Should_Bubble_Up()
         {
@@ -60,6 +75,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "2b", "1" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Tunneling_Event_Should_Tunnel()
         {
@@ -74,6 +93,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "1", "2b" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Tunneling_Bubbling_Event_Should_Tunnel_Then_Bubble_Up()
         {
@@ -92,6 +115,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "1", "2b", "2b", "1" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Events_Should_Have_Route_Set()
         {
@@ -117,6 +144,10 @@ namespace Avalonia.Interactivity.UnitTests
             invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Handled_Bubbled_Event_Should_Not_Propogate_Further()
         {
@@ -138,6 +169,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "2b" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Handled_Tunnelled_Event_Should_Not_Propogate_Further()
         {
@@ -163,6 +198,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "1", "2b" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Direct_Subscription_Should_Not_Catch_Tunneling_Or_Bubbling()
         {
@@ -186,6 +225,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(0, count);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Bubbling_Subscription_Should_Not_Catch_Tunneling()
         {
@@ -210,6 +253,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(2, count);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Tunneling_Subscription_Should_Not_Catch_Bubbling()
         {
@@ -234,6 +281,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(2, count);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Event_Should_Should_Keep_Propogating_To_HandedEventsToo_Handlers()
         {
@@ -258,6 +309,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "1", "2b", "2b", "1" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Direct_Class_Handlers_Should_Be_Called()
         {
@@ -279,6 +334,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "2b" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Tunneling_Class_Handlers_Should_Be_Called()
         {
@@ -300,6 +359,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "1", "2b" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Bubbling_Class_Handlers_Should_Be_Called()
         {
@@ -321,6 +384,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "2b", "1" }, invoked);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Typed_Class_Handlers_Should_Be_Called()
         {
@@ -340,6 +407,14 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.True(target.GetVisualParent<TestInteractive>().ClassHandlerInvoked);
         }
 
+        /// <summary>
+        /// Creates a tree for the test.
+        /// </summary>
+        /// <param name="ev"></param>
+        /// <param name="handler"></param>
+        /// <param name="handlerRoutes"></param>
+        /// <param name="handledEventsToo"></param>
+        /// <returns></returns>
         private TestInteractive CreateTree(
             RoutedEvent ev,
             EventHandler<RoutedEventArgs> handler,
@@ -382,6 +457,9 @@ namespace Avalonia.Interactivity.UnitTests
             return target;
         }
 
+        /// <summary>
+        /// Definition of the <see cref="TestInteractive"/> class.
+        /// </summary>
         private class TestInteractive : Interactive
         {
             public bool ClassHandlerInvoked { get; private set; }

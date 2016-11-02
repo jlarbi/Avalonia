@@ -3,10 +3,24 @@
 
 namespace Avalonia.Controls.Primitives
 {
+    /// <summary>
+    /// Definition of the <see cref="ScrollBarVisibility"/> enumeration.
+    /// </summary>
     public enum ScrollBarVisibility
     {
+        /// <summary>
+        /// Let the control decide whether the scrollbar is visible or not.
+        /// </summary>
         Auto,
+
+        /// <summary>
+        /// Forces the scrollbar to be visible.
+        /// </summary>
         Visible,
+
+        /// <summary>
+        /// Forces the scrollbar to be hidden.
+        /// </summary>
         Hidden,
     }
 }

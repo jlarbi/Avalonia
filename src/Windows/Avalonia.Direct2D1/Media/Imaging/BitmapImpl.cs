@@ -74,6 +74,9 @@ namespace Avalonia.Direct2D1.Media
         /// </summary>
         public int PixelHeight => WicImpl.Size.Height;
 
+        /// <summary>
+        /// Releases resources.
+        /// </summary>
         public virtual void Dispose()
         {
             WicImpl.Dispose();
@@ -121,6 +124,10 @@ namespace Avalonia.Direct2D1.Media
             }
         }
 
+        /// <summary>
+        /// Save the bitmap into a stream.
+        /// </summary>
+        /// <param name="stream"></param>
         public void Save(Stream stream)
         {
             PngBitmapEncoder encoder = new PngBitmapEncoder(_factory);

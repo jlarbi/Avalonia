@@ -50,7 +50,11 @@ namespace Avalonia.Controls
             set { SetValue(PaddingProperty, value); }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Custom measurement of the UI element provided by sub classes.
+        /// </summary>
+        /// <param name="availableSize">The available size that parent can give to the child.</param>
+        /// <returns>The requested UI element size.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
             var content = Child;
@@ -67,7 +71,10 @@ namespace Avalonia.Controls
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Custom arrangement of the UI element provided by sub classes.
+        /// </summary>
+        /// <param name="finalSize"></param>
         protected override Size ArrangeOverride(Size finalSize)
         {
             Child?.Arrange(new Rect(finalSize).Deflate(Padding));

@@ -22,6 +22,9 @@ namespace WindowsInteropTest
     /// </summary>
     public partial class EmbedToWpfDemo : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmbedToWpfDemo"/> class.
+        /// </summary>
         public EmbedToWpfDemo()
         {
             InitializeComponent();

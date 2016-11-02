@@ -3,10 +3,20 @@
 
 namespace Avalonia.Controls.Presenters
 {
+    /// <summary>
+    /// Definition of the <see cref="IItemsPresenter"/> interface.
+    /// </summary>
     public interface IItemsPresenter : IPresenter
     {
+        /// <summary>
+        /// Gets the panel.
+        /// </summary>
         IPanel Panel { get; }
 
+        /// <summary>
+        /// Scrolls into the view until the given item.
+        /// </summary>
+        /// <param name="item">The item to reach.</param>
         void ScrollIntoView(object item);
     }
 }

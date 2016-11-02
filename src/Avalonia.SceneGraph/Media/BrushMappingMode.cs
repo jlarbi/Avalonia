@@ -9,9 +9,19 @@ using System.Threading.Tasks;
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="BrushMappingMode"/> enumeration.
+    /// </summary>
     public enum BrushMappingMode
     {
+        /// <summary>
+        /// Absolute
+        /// </summary>
         Absolute,
+
+        /// <summary>
+        /// Relative to the BBox.
+        /// </summary>
         RelativeToBoundingBox
     }
 }

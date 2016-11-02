@@ -9,10 +9,24 @@ using System.Threading.Tasks;
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="GradientSpreadMethod"/> enumeration.
+    /// </summary>
     public enum GradientSpreadMethod
     {
+        /// <summary>
+        /// Pad.
+        /// </summary>
         Pad,
+
+        /// <summary>
+        /// Reflect.
+        /// </summary>
         Reflect,
+
+        /// <summary>
+        /// Repeat.
+        /// </summary>
         Repeat
     }
 }

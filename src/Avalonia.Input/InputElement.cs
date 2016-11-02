@@ -365,6 +365,9 @@ namespace Avalonia.Input
             set { SetValue(IsEnabledCoreProperty, value); }
         }
 
+        /// <summary>
+        /// Gets the list of key bindings.
+        /// </summary>
         public List<KeyBinding> KeyBindings { get; } = new List<KeyBinding>();
 
         /// <summary>
@@ -375,7 +378,11 @@ namespace Avalonia.Input
             FocusManager.Instance.Focus(this);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Delegate called on detached from visual tree event 
+        /// for this control and all of its visual descendents.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnDetachedFromVisualTreeCore(VisualTreeAttachmentEventArgs e)
         {
             base.OnDetachedFromVisualTreeCore(e);
@@ -386,7 +393,11 @@ namespace Avalonia.Input
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Delegate called on attached from visual tree event 
+        /// for this control and all of its visual descendents.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnAttachedToVisualTreeCore(VisualTreeAttachmentEventArgs e)
         {
             base.OnAttachedToVisualTreeCore(e);

@@ -6,22 +6,40 @@ using Gdk;
 namespace Avalonia.Gtk
 {
     using Gtk = global::Gtk;
+
+    /// <summary>
+    /// Definition of the <see cref="WindowImpl"/> class.
+    /// </summary>
     public class WindowImpl : WindowImplBase
     {
-        private Gtk.Window _window;
-        private Gtk.Window Window => _window ?? (_window = (Gtk.Window) Widget);
-		
+        /// <summary>
+        /// Stores the casted widget into a window.
+        /// </summary>
+        private Gtk.Window mWindow;
+
+        private Gtk.Window Window => mWindow ?? (mWindow = (Gtk.Window) Widget);
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowImpl"/> class.
+        /// </summary>
+        /// <param name="type">The window type.</param>
         public WindowImpl(Gtk.WindowType type) : base(new PlatformHandleAwareWindow(type))
         {
             Init();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowImpl"/> class.
+        /// </summary>
         public WindowImpl()
             : base(new PlatformHandleAwareWindow(Gtk.WindowType.Toplevel) {DefaultSize = new Gdk.Size(900, 480)})
         {
             Init();
         }
 
+        /// <summary>
+        /// Initializes the window.
+        /// </summary>
         void Init()
         {
             Window.FocusActivated += OnFocusActivated;
@@ -52,6 +70,9 @@ namespace Avalonia.Gtk
             }
         }
 
+        /// <summary>
+        /// Gets or sets the client size.
+        /// </summary>
         public override Size ClientSize
         {
             get
@@ -68,6 +89,10 @@ namespace Avalonia.Gtk
             }
         }
 
+        /// <summary>
+        /// Sets the window title.
+        /// </summary>
+        /// <param name="title"></param>
         public override void SetTitle(string title)
         {
             Window.Title = title;
@@ -78,6 +103,9 @@ namespace Avalonia.Gtk
             Activated();
         }
 
+        /// <summary>
+        /// Starts a drag move.
+        /// </summary>
         public override void BeginMoveDrag()
         {
             int x, y;
@@ -86,6 +114,10 @@ namespace Avalonia.Gtk
             Window.BeginMoveDrag(1, x, y, 0);
         }
 
+        /// <summary>
+        /// Starts a drag to resize move.
+        /// </summary>
+        /// <param name="edge"></param>
         public override void BeginResizeDrag(Controls.WindowEdge edge)
         {
             int x, y;
@@ -94,6 +126,9 @@ namespace Avalonia.Gtk
             Window.BeginResizeDrag((Gdk.WindowEdge)(int)edge, 1, x, y, 0);
         }
 
+        /// <summary>
+        /// Gets or sets the window position.
+        /// </summary>
         public override Point Position
         {
             get
@@ -108,6 +143,10 @@ namespace Avalonia.Gtk
             }
         }
 
+        /// <summary>
+        /// Shows a the window as dialog box.
+        /// </summary>
+        /// <returns></returns>
         public override IDisposable ShowDialog()
         {
             Window.Modal = true;
@@ -116,8 +155,16 @@ namespace Avalonia.Gtk
             return Disposable.Empty;
         }
 
+        /// <summary>
+        /// Sets the system decorations.
+        /// </summary>
+        /// <param name="enabled"></param>
         public override void SetSystemDecorations(bool enabled) => Window.Decorated = enabled;
 
+        /// <summary>
+        /// Sets the window icon.
+        /// </summary>
+        /// <param name="icon"></param>
         public override void SetIcon(IWindowIconImpl icon)
         {
             Window.Icon = ((IconImpl)icon).Pixbuf;

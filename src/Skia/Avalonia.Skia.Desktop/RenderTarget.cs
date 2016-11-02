@@ -8,6 +8,9 @@ using Avalonia.Win32.Interop;
 
 namespace Avalonia.Skia
 {
+    /// <summary>
+    /// Definition of the <see cref="RenderTarget"/> class.
+    /// </summary>
     internal partial class RenderTarget : IRenderTarget
     {
         public SKSurface Surface { get; protected set; }
@@ -25,6 +28,9 @@ namespace Avalonia.Skia
         }
     }
 
+    /// <summary>
+    /// Definition of the <see cref="WindowRenderTarget"/> class.
+    /// </summary>
     internal class WindowRenderTarget : RenderTarget
     {
         private readonly IPlatformHandle _hwnd;
@@ -81,6 +87,7 @@ namespace Avalonia.Skia
 
         private Size GetWindowDpiWin32()
         {
+#if WIN32
             if (UnmanagedMethods.ShCoreAvailable)
             {
                 uint dpix, dpiy;
@@ -100,6 +107,9 @@ namespace Avalonia.Skia
             }
 
             return new Size(96, 96);
+#else
+            throw new NotImplementedException();
+#endif
         }
 
         public override DrawingContext CreateDrawingContext()

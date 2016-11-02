@@ -5,6 +5,9 @@ using Avalonia.Markup.Xaml;
 
 namespace ControlCatalog.Pages
 {
+    /// <summary>
+    /// Definition of the <see cref="CarouselPage"/> class.
+    /// </summary>
     public class CarouselPage : UserControl
     {
         private Carousel _carousel;
@@ -12,6 +15,9 @@ namespace ControlCatalog.Pages
         private Button _right;
         private DropDown _transition;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CarouselPage"/> class.
+        /// </summary>
         public CarouselPage()
         {
             this.InitializeComponent();
@@ -20,6 +26,9 @@ namespace ControlCatalog.Pages
             _transition.SelectionChanged += TransitionChanged;
         }
 
+        /// <summary>
+        /// Initializes the carousel page.
+        /// </summary>
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
@@ -29,6 +38,11 @@ namespace ControlCatalog.Pages
             _transition = this.FindControl<DropDown>("transition");
         }
 
+        /// <summary>
+        /// Delegate called on carousel transition changes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TransitionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (_transition.SelectedIndex)

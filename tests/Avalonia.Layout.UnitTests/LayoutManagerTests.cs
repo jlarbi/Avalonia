@@ -6,8 +6,15 @@ using Xunit;
 
 namespace Avalonia.Layout.UnitTests
 {
+    /// <summary>
+    /// Definition of the <see cref="LayoutManagerTests"/> class.
+    /// </summary>
     public class LayoutManagerTests
     {
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Invalidating_Child_Should_Remeasure_Parent()
         {

@@ -6,13 +6,24 @@ using Xunit.Abstractions;
 
 namespace Avalonia.LeakTests
 {
+    /// <summary>
+    /// Definition of the <see cref="AvaloniaObjectTests"/> class.
+    /// </summary>
     public class AvaloniaObjectTests
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AvaloniaObjectTests"/> class.
+        /// </summary>
+        /// <param name="atr"></param>
         public AvaloniaObjectTests(ITestOutputHelper atr)
         {
             DotMemoryUnitTestOutput.SetOutputMethod(atr.WriteLine);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Binding_To_Direct_Property_Does_Not_Get_Collected()
         {
@@ -34,6 +45,10 @@ namespace Avalonia.LeakTests
             Assert.True(weakSource.IsAlive);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Binding_To_Direct_Property_Gets_Collected_When_Completed()
         {
@@ -59,6 +74,9 @@ namespace Avalonia.LeakTests
             Assert.False(weakSource.IsAlive);
         }
 
+        /// <summary>
+        /// Definition of the <see cref="Class1"/> class.
+        /// </summary>
         private class Class1 : AvaloniaObject
         {
             public static readonly DirectProperty<Class1, string> FooProperty =

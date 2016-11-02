@@ -74,7 +74,12 @@ namespace Avalonia.Controls
         public new ITreeItemContainerGenerator ItemContainerGenerator =>
             (ITreeItemContainerGenerator)base.ItemContainerGenerator;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Creates the <see cref="ItemContainerGenerator"/> for the control.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="IItemContainerGenerator"/> or null.
+        /// </returns>
         protected override IItemContainerGenerator CreateItemContainerGenerator()
         {
             return new TreeItemContainerGenerator<TreeViewItem>(
@@ -86,7 +91,10 @@ namespace Avalonia.Controls
                 _treeView?.ItemContainerGenerator.Index ?? new TreeContainerIndex());
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called when the control is added to a rooted logical tree.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnAttachedToLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             base.OnAttachedToLogicalTree(e);
@@ -98,13 +106,20 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Called when the control is removed from a rooted logical tree.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             base.OnDetachedFromLogicalTree(e);
             ItemContainerGenerator.Clear();
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called before the <see cref="InputElement.KeyDown"/> event occurs.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (!e.Handled)

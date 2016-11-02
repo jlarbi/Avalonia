@@ -5,8 +5,14 @@ using System;
 
 namespace Avalonia.Input
 {
+    /// <summary>
+    /// Definition of the <see cref="ICloseable"/> interface.
+    /// </summary>
     public interface ICloseable
     {
+        /// <summary>
+        /// Event informing about the element closed.
+        /// </summary>
         event EventHandler Closed;
     }
 }

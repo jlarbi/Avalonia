@@ -10,6 +10,9 @@ using Avalonia.Input;
 
 namespace Avalonia.Gtk
 {
+    /// <summary>
+    /// Definition of the <see cref="GtkKeyboardDevice"/> class.
+    /// </summary>
     public class GtkKeyboardDevice : KeyboardDevice
     {
         private static readonly Dictionary<Gdk.Key, Key> KeyDic = new Dictionary<Gdk.Key, Key>
@@ -214,8 +217,16 @@ namespace Avalonia.Gtk
             //{ Gdk.Key.?, Key.DeadCharProcessed }
         };
 
+        /// <summary>
+        /// Gets the <see cref="GtkKeyboardDevice"/> instance.
+        /// </summary>
         public new static GtkKeyboardDevice Instance { get; } = new GtkKeyboardDevice();
 
+        /// <summary>
+        /// Turns a Gdk keyboard key into an avalonia keyboard key.
+        /// </summary>
+        /// <param name="key">The Gdk key.</param>
+        /// <returns>The avalonia key.</returns>
         public static Key ConvertKey(Gdk.Key key)
         {
             Key result;

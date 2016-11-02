@@ -33,6 +33,13 @@ namespace Avalonia.Media
         /// </summary>
         public byte B { get; }
 
+        /// <summary>
+        /// Creates a new <see cref="Color"/> from alpha, red, green and blue components.
+        /// </summary>
+        /// <param name="a">The alpha component.</param>
+        /// <param name="r">The red component.</param>
+        /// <param name="g">The green component.</param>
+        /// <param name="b">The blue component.</param>
         public Color(byte a, byte r, byte g, byte b)
         {
             A = a;

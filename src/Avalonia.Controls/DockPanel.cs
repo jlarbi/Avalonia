@@ -7,9 +7,24 @@ namespace Avalonia.Controls
     /// </summary>
     public enum Dock
     {
+        /// <summary>
+        /// Dock to the left.
+        /// </summary>
         Left = 0,
+
+        /// <summary>
+        /// Dock to the bottom.
+        /// </summary>
         Bottom,
+
+        /// <summary>
+        /// Dock to the right.
+        /// </summary>
         Right,
+
+        /// <summary>
+        /// Dock to the top.
+        /// </summary>
         Top
     }
 
@@ -70,7 +85,11 @@ namespace Avalonia.Controls
             set { SetValue(LastChildFillProperty, value); }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Measures the control and its child elements as part of a layout pass.
+        /// </summary>
+        /// <param name="constraint">The size available to the control.</param>
+        /// <returns>The desired size for the control.</returns>
         protected override Size MeasureOverride(Size constraint)
         {
             double usedWidth = 0.0;

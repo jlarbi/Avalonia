@@ -132,7 +132,12 @@ namespace Avalonia.Controls
             _subscription.Dispose();
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Creates the <see cref="ItemContainerGenerator"/> for the control.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="IItemContainerGenerator"/> or null.
+        /// </returns>
         protected override IItemContainerGenerator CreateItemContainerGenerator()
         {
             return new ItemContainerGenerator<MenuItem>(this, MenuItem.HeaderProperty, null);

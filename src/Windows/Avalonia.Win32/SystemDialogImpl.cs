@@ -13,9 +13,17 @@ using Avalonia.Win32.Interop;
 
 namespace Avalonia.Win32
 {
-
+    /// <summary>
+    /// Definition of the <see cref="SystemDialogImpl"/> class.
+    /// </summary>
     class SystemDialogImpl : ISystemDialogImpl
     {
+        /// <summary>
+        /// Shows a file dialog.
+        /// </summary>
+        /// <param name="dialog">The details of the file dialog to show.</param>
+        /// <param name="parent">The parent window.</param>
+        /// <returns>A task returning the selected filenames.</returns>
         public unsafe Task<string[]> ShowFileDialogAsync(FileDialog dialog, IWindowImpl parent)
         {
             var hWnd = parent?.Handle?.Handle ?? IntPtr.Zero;
@@ -132,6 +140,12 @@ namespace Avalonia.Win32
             });
         }
 
+        /// <summary>
+        /// Shows a folder dialog.
+        /// </summary>
+        /// <param name="dialog">The details of the folder dialog to show.</param>
+        /// <param name="parent">The parent window.</param>
+        /// <returns>A task returning the selected folders.</returns>
         public Task<string> ShowFolderDialogAsync(OpenFolderDialog dialog, IWindowImpl parent)
         {
             return Task.Factory.StartNew(() =>

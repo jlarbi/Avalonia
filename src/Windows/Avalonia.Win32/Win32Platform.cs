@@ -20,8 +20,17 @@ using Avalonia.Rendering;
 
 namespace Avalonia
 {
+    /// <summary>
+    /// Definition of the <see cref="Win32ApplicationExtensions"/> class.
+    /// </summary>
     public static class Win32ApplicationExtensions
     {
+        /// <summary>
+        /// Builds a win32 application.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="builder">The application builder.</param>
+        /// <returns></returns>
         public static T UseWin32<T>(this T builder) where T : AppBuilderBase<T>, new()
         {
             builder.UseWindowingSubsystem(Win32.Win32Platform.Initialize, "Win32");
@@ -32,6 +41,9 @@ namespace Avalonia
 
 namespace Avalonia.Win32
 {
+    /// <summary>
+    /// Definition of the <see cref="Win32Platform"/> class.
+    /// </summary>
     class Win32Platform : IPlatformThreadingInterface, IPlatformSettings, IWindowingPlatform, IPlatformIconLoader
     {
         private static readonly Win32Platform s_instance = new Win32Platform();
@@ -40,6 +52,9 @@ namespace Avalonia.Win32
         private IntPtr _hwnd;
         private readonly List<Delegate> _delegates = new List<Delegate>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Win32Platform"/> class.
+        /// </summary>
         public Win32Platform()
         {
             // Declare that this process is aware of per monitor DPI
@@ -57,6 +72,9 @@ namespace Avalonia.Win32
 
         public TimeSpan DoubleClickTime => TimeSpan.FromMilliseconds(UnmanagedMethods.GetDoubleClickTime());
 
+        /// <summary>
+        /// Initializes the win32 services.
+        /// </summary>
         public static void Initialize()
         {
             AvaloniaLocator.CurrentMutable

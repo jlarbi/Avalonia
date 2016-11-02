@@ -59,6 +59,11 @@ namespace Avalonia.Markup.Data.Plugins
             return Observable.Empty<object>();
         }
 
+        /// <summary>
+        /// Handle of a task completed.
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns></returns>
         protected IObservable<object> HandleCompleted(Task task)
         {
             var resultProperty = task.GetType().GetTypeInfo().GetDeclaredProperty("Result");

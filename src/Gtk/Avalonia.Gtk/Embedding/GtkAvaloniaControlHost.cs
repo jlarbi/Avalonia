@@ -16,10 +16,16 @@ using Gtk;
 
 namespace Avalonia.Gtk.Embedding
 {
+    /// <summary>
+    /// Definition of the <see cref="GtkAvaloniaControlHost"/> class.
+    /// </summary>
     public class GtkAvaloniaControlHost : DrawingArea, IPlatformHandle
     {
         private EmbeddableControlRoot _root;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GtkAvaloniaControlHost"/> class.
+        /// </summary>
         public GtkAvaloniaControlHost()
         {
             _root = new EmbeddableControlRoot(new EmbeddableImpl(this));
@@ -42,6 +48,11 @@ namespace Avalonia.Gtk.Embedding
                 KeyboardDevice.Instance.SetFocusedElement(null, NavigationMethod.Unspecified, InputModifiers.None);
         }
 
+        /// <summary>
+        /// Delegate called on loosing focus event.
+        /// </summary>
+        /// <param name="evnt"></param>
+        /// <returns></returns>
         protected override bool OnFocusOutEvent(EventFocus evnt)
         {
             Unfocus();
@@ -56,6 +67,9 @@ namespace Avalonia.Gtk.Embedding
 
         private Control _content;
 
+        /// <summary>
+        /// Gets or sets the control host content.
+        /// </summary>
         public Control Content
         {
             get { return _content; }

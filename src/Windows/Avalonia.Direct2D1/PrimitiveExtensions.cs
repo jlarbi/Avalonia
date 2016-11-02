@@ -10,6 +10,9 @@ using DWrite = SharpDX.DirectWrite;
 
 namespace Avalonia.Direct2D1
 {
+    /// <summary>
+    /// Definition of the <see cref="PrimitiveExtensions"/> class.
+    /// </summary>
     public static class PrimitiveExtensions
     {
         /// <summary>
@@ -17,6 +20,9 @@ namespace Avalonia.Direct2D1
         /// </summary>
         public const float ZeroTolerance = 1e-6f; // Value a 8x higher than 1.19209290E-07F
 
+        /// <summary>
+        /// Gets an infinite rectangle.
+        /// </summary>
         public static readonly RawRectangleF RectangleInfinite;
 
         /// <summary>
@@ -25,6 +31,9 @@ namespace Avalonia.Direct2D1
         /// <value>The identity matrix.</value>
         public readonly static RawMatrix3x2 Matrix3x2Identity = new RawMatrix3x2 { M11 = 1, M12 = 0, M21 = 0, M22 = 1, M31 = 0, M32 = 0 };
 
+        /// <summary>
+        /// Initializes static member(s) of the <see cref="PrimitiveExtensions"/> class.
+        /// </summary>
         static PrimitiveExtensions()
         {
             RectangleInfinite = new RawRectangleF
@@ -36,26 +45,51 @@ namespace Avalonia.Direct2D1
             };
         }
 
+        /// <summary>
+        /// Turns a sharpDX rectangle into avalonia rectangle.
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
         public static Rect ToAvalonia(this RawRectangleF r)
         {
             return new Rect(new Point(r.Left, r.Top), new Point(r.Right, r.Bottom));
         }
 
+        /// <summary>
+        /// Turns an avalonia rectangle into a SharpDX rectangle.
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
         public static RawRectangleF ToSharpDX(this Rect r)
         {
             return new RawRectangleF((float)r.X, (float)r.Y, (float)r.Right, (float)r.Bottom);
         }
 
+        /// <summary>
+        /// Turns an avalonia point into a SharpDX vector2F.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public static RawVector2 ToSharpDX(this Point p)
         {
             return new RawVector2 { X = (float)p.X, Y = (float)p.Y };
         }
 
+        /// <summary>
+        /// Turns an avalonia size into a SharpDX size.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public static Size2F ToSharpDX(this Size p)
         {
             return new Size2F((float)p.Width, (float)p.Height);
         }
 
+        /// <summary>
+        /// Turns an avalonia gradient spread method into a SharpDX extend mode.
+        /// </summary>
+        /// <param name="spreadMethod"></param>
+        /// <returns></returns>
         public static ExtendMode ToDirect2D(this Avalonia.Media.GradientSpreadMethod spreadMethod)
         {
             if (spreadMethod == Avalonia.Media.GradientSpreadMethod.Pad)
@@ -66,6 +100,11 @@ namespace Avalonia.Direct2D1
                 return ExtendMode.Wrap;
         }
 
+        /// <summary>
+        /// Turns an avalonia pen line join into a SharpDX line join.
+        /// </summary>
+        /// <param name="lineJoin"></param>
+        /// <returns></returns>
         public static SharpDX.Direct2D1.LineJoin ToDirect2D(this Avalonia.Media.PenLineJoin lineJoin)
         {
             if (lineJoin == Avalonia.Media.PenLineJoin.Round)
@@ -75,7 +114,12 @@ namespace Avalonia.Direct2D1
             else
                 return LineJoin.Bevel;
         }
-        
+
+        /// <summary>
+        /// Turns an avalonia pen line cap into a SharpDX cap style
+        /// </summary>
+        /// <param name="lineCap"></param>
+        /// <returns></returns>
         public static SharpDX.Direct2D1.CapStyle ToDirect2D(this Avalonia.Media.PenLineCap lineCap)
         {
             if (lineCap == Avalonia.Media.PenLineCap.Flat)
@@ -177,6 +221,11 @@ namespace Avalonia.Direct2D1
                 (float)rect.Bottom);
         }
 
+        /// <summary>
+        /// Turns an avalonia text alignment into a SharpDX text alignment.
+        /// </summary>
+        /// <param name="alignment"></param>
+        /// <returns></returns>
         public static DWrite.TextAlignment ToDirect2D(this Avalonia.Media.TextAlignment alignment)
         {
             switch (alignment)

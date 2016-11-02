@@ -5,6 +5,9 @@ using Avalonia.Metadata;
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="PathFigure"/> class.
+    /// </summary>
     public sealed class PathFigure : AvaloniaObject
     {
         /// <summary>
@@ -85,16 +88,20 @@ namespace Avalonia.Media
             set { SetValue(StartPointProperty, value); }
         }
 
-        internal void ApplyTo(StreamGeometryContext ctx)
+        /// <summary>
+        /// Applies a new path figure to the geometry.
+        /// </summary>
+        /// <param name="pContext">The geometry context.</param>
+        internal void ApplyTo(StreamGeometryContext pContext)
         {
-            ctx.BeginFigure(StartPoint, IsFilled);
+            pContext.BeginFigure(StartPoint, IsFilled);
 
             foreach (var segment in Segments)
             {
-                segment.ApplyTo(ctx);
+                segment.ApplyTo(pContext);
             }
 
-            ctx.EndFigure(IsClosed);
+            pContext.EndFigure(IsClosed);
         }
 
         private PathSegments _segments;

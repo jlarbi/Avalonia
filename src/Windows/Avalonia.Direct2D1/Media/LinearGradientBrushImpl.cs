@@ -5,8 +5,17 @@ using System.Linq;
 
 namespace Avalonia.Direct2D1.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="LinearGradientBrushImpl"/> class.
+    /// </summary>
     public class LinearGradientBrushImpl : BrushImpl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LinearGradientBrushImpl"/> class.
+        /// </summary>
+        /// <param name="brush"></param>
+        /// <param name="target"></param>
+        /// <param name="destinationSize"></param>
         public LinearGradientBrushImpl(
             Avalonia.Media.LinearGradientBrush brush,
             SharpDX.Direct2D1.RenderTarget target,

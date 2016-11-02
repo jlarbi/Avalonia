@@ -18,8 +18,14 @@ namespace Avalonia.Styling
     /// </remarks>
     public class SelectorMatch
     {
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
         public static readonly SelectorMatch False = new SelectorMatch(false);
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
         public static readonly SelectorMatch True = new SelectorMatch(true);
 
         /// <summary>

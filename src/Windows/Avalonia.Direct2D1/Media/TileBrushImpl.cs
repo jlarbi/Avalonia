@@ -7,8 +7,17 @@ using SharpDX.Direct2D1;
 
 namespace Avalonia.Direct2D1.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="TileBrushImpl"/> class.
+    /// </summary>
     public sealed class TileBrushImpl : BrushImpl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TileBrushImpl"/> class.
+        /// </summary>
+        /// <param name="brush"></param>
+        /// <param name="target"></param>
+        /// <param name="targetSize"></param>
         public TileBrushImpl(
             TileBrush brush,
             SharpDX.Direct2D1.RenderTarget target,
@@ -69,6 +78,9 @@ namespace Avalonia.Direct2D1.Media
             return (tileMode & TileMode.FlipY) != 0 ? ExtendMode.Mirror : ExtendMode.Wrap;
         }
 
+        /// <summary>
+        /// Releases resources.
+        /// </summary>
         public override void Dispose()
         {
             ((BitmapBrush)PlatformBrush)?.Bitmap.Dispose();

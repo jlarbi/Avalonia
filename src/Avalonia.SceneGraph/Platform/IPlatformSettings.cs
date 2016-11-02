@@ -5,10 +5,19 @@ using System;
 
 namespace Avalonia.Platform
 {
+    /// <summary>
+    /// Definition of the <see cref="IPlatformSettings"/> interface.
+    /// </summary>
     public interface IPlatformSettings
     {
+        /// <summary>
+        /// Double clic area size
+        /// </summary>
         Size DoubleClickSize { get; }
 
+        /// <summary>
+        /// Double click maximum elapsed time.
+        /// </summary>
         TimeSpan DoubleClickTime { get; }
     }
 }

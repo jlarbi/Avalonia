@@ -10,6 +10,9 @@ namespace Avalonia.Platform
     /// </summary>
     public interface IEmbeddableWindowImpl : IWindowImpl
     {
+        /// <summary>
+        /// Event fired on lost focus.
+        /// </summary>
         event Action LostFocus;
     }
 }

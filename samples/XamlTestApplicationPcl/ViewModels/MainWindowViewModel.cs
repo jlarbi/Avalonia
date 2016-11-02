@@ -8,8 +8,14 @@ using Avalonia.Controls;
 
 namespace XamlTestApplication.ViewModels
 {
+    /// <summary>
+    /// Definition of the <see cref="MainWindowViewModel"/> class.
+    /// </summary>
     public class MainWindowViewModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
+        /// </summary>
         public MainWindowViewModel()
         {
             Items = new List<TestItem>();
@@ -84,25 +90,54 @@ namespace XamlTestApplication.ViewModels
             shell = ShellViewModel.Instance;
         }
 
+        /// <summary>
+        /// Stores the shell view model.
+        /// </summary>
         private ShellViewModel shell;
 
+        /// <summary>
+        /// Gets pr sets the shell view model.
+        /// </summary>
         public ShellViewModel Shell
         {
             get { return shell; }
             set { shell = value; }
         }
 
+        /// <summary>
+        /// Gets the view model items.
+        /// </summary>
         public List<TestItem> Items { get; }
+
+        /// <summary>
+        /// Gets the view model nodes.
+        /// </summary>
         public List<TestNode> Nodes { get; }
 
+        /// <summary>
+        /// Gets the collapsed nodes command.
+        /// </summary>
         public ReactiveCommand<object> CollapseNodesCommand { get; }
 
+        /// <summary>
+        /// Gets the expand nodes command.
+        /// </summary>
         public ReactiveCommand<object> ExpandNodesCommand { get; }
 
+        /// <summary>
+        /// Gets the open file command.
+        /// </summary>
         public ReactiveCommand<object> OpenFileCommand { get; }
 
+        /// <summary>
+        /// Gets the open folder command.
+        /// </summary>
         public ReactiveCommand<object> OpenFolderCommand { get; }
 
+        /// <summary>
+        /// Expands nodes.
+        /// </summary>
+        /// <param name="expanded">The flag indicating whether nodes are expanded or collapsed.</param>
         public void ExpandNodes(bool expanded)
         {
             foreach (var node in Nodes)
@@ -111,6 +146,11 @@ namespace XamlTestApplication.ViewModels
             }
         }
 
+        /// <summary>
+        /// Expands nodes. (recursive)
+        /// </summary>
+        /// <param name="node">The node to expand or collaspe.</param>
+        /// <param name="expanded">The flag indicating whether nodes are expanded or collapsed.</param>
         private void ExpandNodes(TestNode node, bool expanded)
         {
             node.IsExpanded = expanded;

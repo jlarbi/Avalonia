@@ -3,6 +3,9 @@
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="BezierSegment"/> class.
+    /// </summary>
     public sealed class BezierSegment : PathSegment
     {
         /// <summary>
@@ -57,9 +60,13 @@ namespace Avalonia.Media
             set { SetValue(Point3Property, value); }
         }
 
-        protected internal override void ApplyTo(StreamGeometryContext ctx)
+        /// <summary>
+        /// Applies a new sgement to a Bezier curve.
+        /// </summary>
+        /// <param name="pContext">The geometry context.</param>
+        protected internal override void ApplyTo(StreamGeometryContext pContext)
         {
-            ctx.CubicBezierTo(Point1, Point2, Point3);
+            pContext.CubicBezierTo(Point1, Point2, Point3);
         }
     }
 }

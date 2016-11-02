@@ -9,17 +9,28 @@ using Avalonia.Media;
 
 namespace Avalonia.Diagnostics.Views
 {
+    /// <summary>
+    /// Definition of the <see cref="TreePageView"/> class.
+    /// </summary>
     public class TreePageView : UserControl
     {
         private Control _adorner;
         private TreeView _tree;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TreePageView"/> class.
+        /// </summary>
         public TreePageView()
         {
             this.InitializeComponent();
             _tree.ItemContainerGenerator.Index.Materialized += TreeViewItemMaterialized;
         }
 
+        /// <summary>
+        /// Adds the given object as adorner.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void AddAdorner(object sender, PointerEventArgs e)
         {
             var node = (TreeNode)((Control)sender).DataContext;
@@ -37,6 +48,11 @@ namespace Avalonia.Diagnostics.Views
             }
         }
 
+        /// <summary>
+        /// Removes the given object as adorner.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void RemoveAdorner(object sender, PointerEventArgs e)
         {
             if (_adorner != null)

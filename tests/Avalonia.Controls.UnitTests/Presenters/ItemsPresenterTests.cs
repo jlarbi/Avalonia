@@ -350,22 +350,44 @@ namespace Avalonia.Controls.UnitTests.Presenters
             Assert.Equal(new[] { "Foo", "Bar" }, dataContexts);
         }
 
+        /// <summary>
+        /// Definition of the <see cref="Item"/> class.
+        /// </summary>
         private class Item
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Item"/> class.
+            /// </summary>
+            /// <param name="value"></param>
             public Item(string value)
             {
                 Value = value;
             }
 
+            /// <summary>
+            /// Gets the value.
+            /// </summary>
             public string Value { get; }
         }
 
+        /// <summary>
+        /// Definition of the <see cref="TestItem"/> class.
+        /// </summary>
         private class TestItem : ContentControl
         {
         }
 
+        /// <summary>
+        /// Definition of the <see cref="TestItemsControl"/> class.
+        /// </summary>
         private class TestItemsControl : ItemsControl
         {
+            /// <summary>
+            /// Creates the <see cref="ItemContainerGenerator"/> for the control.
+            /// </summary>
+            /// <returns>
+            /// An <see cref="IItemContainerGenerator"/> or null.
+            /// </returns>
             protected override IItemContainerGenerator CreateItemContainerGenerator()
             {
                 return new ItemContainerGenerator<TestItem>(this, TestItem.ContentProperty, null);

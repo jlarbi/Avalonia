@@ -8,8 +8,15 @@ using Xunit;
 
 namespace Avalonia.Interactivity.UnitTests
 {
+    /// <summary>
+    /// Definition of the <see cref="GestureTests"/> class.
+    /// </summary>
     public class GestureTests
     {
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Tapped_Should_Follow_Pointer_Pressed_Released()
         {
@@ -33,6 +40,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "bp", "dp", "br", "dr", "bt", "dt" }, result);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Tapped_Should_Be_Raised_Even_When_PointerPressed_Handled()
         {
@@ -53,6 +64,10 @@ namespace Avalonia.Interactivity.UnitTests
             Assert.Equal(new[] { "bt", "dt" }, result);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void DoubleTapped_Should_Follow_Pointer_Pressed_Released_Pressed()
         {

@@ -9,14 +9,25 @@ using Xunit.Abstractions;
 
 namespace Avalonia.LeakTests
 {
+    /// <summary>
+    /// Definition of the <see cref="ExpressionObserverTests"/> class.
+    /// </summary>
     [DotMemoryUnit(FailIfRunWithoutSupport = false)]
     public class ExpressionObserverTests
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExpressionObserverTests"/> class.
+        /// </summary>
+        /// <param name="atr"></param>
         public ExpressionObserverTests(ITestOutputHelper atr)
         {
             DotMemoryUnitTestOutput.SetOutputMethod(atr.WriteLine);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Should_Not_Keep_Source_Alive_ObservableCollection()
         {
@@ -35,6 +46,10 @@ namespace Avalonia.LeakTests
                 Assert.Equal(0, memory.GetObjects(where => where.Type.Is<AvaloniaList<string>>()).ObjectsCount));
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Should_Not_Keep_Source_Alive_ObservableCollection_With_DataValidation()
         {
@@ -53,6 +68,10 @@ namespace Avalonia.LeakTests
                 Assert.Equal(0, memory.GetObjects(where => where.Type.Is<AvaloniaList<string>>()).ObjectsCount));
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Should_Not_Keep_Source_Alive_NonIntegerIndexer()
         {
@@ -71,6 +90,9 @@ namespace Avalonia.LeakTests
                 Assert.Equal(0, memory.GetObjects(where => where.Type.Is<NonIntegerIndexer>()).ObjectsCount));
         }
 
+        /// <summary>
+        /// Definition of the <see cref="NonIntegerIndexer"/> class.
+        /// </summary>
         private class NonIntegerIndexer : NotifyingBase
         {
             private readonly Dictionary<string, string> _storage = new Dictionary<string, string>();

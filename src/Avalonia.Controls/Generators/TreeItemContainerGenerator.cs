@@ -60,7 +60,11 @@ namespace Avalonia.Controls.Generators
         /// </summary>
         protected AvaloniaProperty IsExpandedProperty { get; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Creates the container for an item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>The created container control.</returns>
         protected override IControl CreateContainer(object item)
         {
             var container = item as T;
@@ -100,6 +104,10 @@ namespace Avalonia.Controls.Generators
             }
         }
 
+        /// <summary>
+        /// Clears all created containers and returns the removed controls.
+        /// </summary>
+        /// <returns>The removed controls.</returns>
         public override IEnumerable<ItemContainerInfo> Clear()
         {
             var items = base.Clear();
@@ -107,23 +115,54 @@ namespace Avalonia.Controls.Generators
             return items;
         }
 
+        /// <summary>
+        /// Removes a set of created containers.
+        /// </summary>
+        /// <param name="startingIndex">
+        /// The index of the first item in the control's items.
+        /// </param>
+        /// <param name="count">The the number of items to remove.</param>
+        /// <returns>The removed containers.</returns>
         public override IEnumerable<ItemContainerInfo> Dematerialize(int startingIndex, int count)
         {
             Index.Remove(startingIndex, GetContainerRange(startingIndex, count));
             return base.Dematerialize(startingIndex, count);
         }
 
+        /// <summary>
+        /// Removes a set of created containers and updates the index of later containers to fill
+        /// the gap.
+        /// </summary>
+        /// <param name="startingIndex">
+        /// The index of the first item in the control's items.
+        /// </param>
+        /// <param name="count">The the number of items to remove.</param>
+        /// <returns>The removed containers.</returns>
         public override IEnumerable<ItemContainerInfo> RemoveRange(int startingIndex, int count)
         {
             Index.Remove(startingIndex, GetContainerRange(startingIndex, count));
             return base.RemoveRange(startingIndex, count);
         }
 
+        /// <summary>
+        /// Attempts to recycle the given element by moving it from a position to another.
+        /// </summary>
+        /// <param name="oldIndex">The old position.</param>
+        /// <param name="newIndex">The new position.</param>
+        /// <param name="item">The item to recycle.</param>
+        /// <param name="selector">The member selector if needed.</param>
+        /// <returns>True if recycled, false otherwise.</returns>
         public override bool TryRecycle(int oldIndex, int newIndex, object item, IMemberSelector selector)
         {
             return false;
         }
 
+        /// <summary>
+        /// Gets the data template used for the given item to decorate it.
+        /// </summary>
+        /// <param name="item">The item to look the data template for.</param>
+        /// <param name="primary"></param>
+        /// <returns>The found or default data template.</returns>
         private ITreeDataTemplate GetTreeDataTemplate(object item, IDataTemplate primary)
         {
             var template = Owner.FindDataTemplate(item, primary) ?? FuncDataTemplate.Default;

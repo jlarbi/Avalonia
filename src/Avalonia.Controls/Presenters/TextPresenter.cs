@@ -10,18 +10,30 @@ using Avalonia.VisualTree;
 
 namespace Avalonia.Controls.Presenters
 {
+    /// <summary>
+    /// Definition of the <see cref="TextPresenter"/> class.
+    /// </summary>
     public class TextPresenter : TextBlock
     {
+        /// <summary>
+        /// The caret index property.
+        /// </summary>
         public static readonly DirectProperty<TextPresenter, int> CaretIndexProperty =
             TextBox.CaretIndexProperty.AddOwner<TextPresenter>(
                 o => o.CaretIndex,
                 (o, v) => o.CaretIndex = v);
 
+        /// <summary>
+        /// The selection start property.
+        /// </summary>
         public static readonly DirectProperty<TextPresenter, int> SelectionStartProperty =
             TextBox.SelectionStartProperty.AddOwner<TextPresenter>(
                 o => o.SelectionStart,
                 (o, v) => o.SelectionStart = v);
 
+        /// <summary>
+        /// The selection end property.
+        /// </summary>
         public static readonly DirectProperty<TextPresenter, int> SelectionEndProperty =
             TextBox.SelectionEndProperty.AddOwner<TextPresenter>(
                 o => o.SelectionEnd,
@@ -34,6 +46,9 @@ namespace Avalonia.Controls.Presenters
         private bool _caretBlink;
         private IBrush _highlightBrush;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextPresenter"/> class.
+        /// </summary>
         public TextPresenter()
         {
             _caretTimer = new DispatcherTimer();
@@ -49,6 +64,9 @@ namespace Avalonia.Controls.Presenters
                 .Subscribe(CaretIndexChanged);
         }
 
+        /// <summary>
+        /// Gets or sets the caret index.
+        /// </summary>
         public int CaretIndex
         {
             get
@@ -63,6 +81,9 @@ namespace Avalonia.Controls.Presenters
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selection start.
+        /// </summary>
         public int SelectionStart
         {
             get
@@ -77,6 +98,9 @@ namespace Avalonia.Controls.Presenters
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selection end.
+        /// </summary>
         public int SelectionEnd
         {
             get
@@ -91,12 +115,21 @@ namespace Avalonia.Controls.Presenters
             }
         }
 
+        /// <summary>
+        /// Gets the caret index at the given point.
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
         public int GetCaretIndex(Point point)
         {
             var hit = FormattedText.HitTestPoint(point);
             return hit.TextPosition + (hit.IsTrailing ? 1 : 0);
         }
 
+        /// <summary>
+        /// Renders the text.
+        /// </summary>
+        /// <param name="context">The drawing context.</param>
         public override void Render(DrawingContext context)
         {
             var selectionStart = SelectionStart;
@@ -155,6 +188,9 @@ namespace Avalonia.Controls.Presenters
             }
         }
 
+        /// <summary>
+        /// Shows the caret.
+        /// </summary>
         public void ShowCaret()
         {
             _caretBlink = true;
@@ -162,6 +198,9 @@ namespace Avalonia.Controls.Presenters
             InvalidateVisual();
         }
 
+        /// <summary>
+        /// Hides the caret.
+        /// </summary>
         public void HideCaret()
         {
             _caretBlink = false;
@@ -169,6 +208,10 @@ namespace Avalonia.Controls.Presenters
             InvalidateVisual();
         }
 
+        /// <summary>
+        /// Delegate called on caret index changes.
+        /// </summary>
+        /// <param name="caretIndex">The new caret index.</param>
         internal void CaretIndexChanged(int caretIndex)
         {
             if (this.GetVisualParent() != null)
@@ -199,6 +242,11 @@ namespace Avalonia.Controls.Presenters
             }
         }
 
+        /// <summary>
+        /// Creates the <see cref="FormattedText"/> used to render the text.
+        /// </summary>
+        /// <param name="constraint">The constraint of the text.</param>
+        /// <returns>A <see cref="FormattedText"/> object.</returns>
         protected override FormattedText CreateFormattedText(Size constraint)
         {
             var result = base.CreateFormattedText(constraint);
@@ -215,6 +263,11 @@ namespace Avalonia.Controls.Presenters
             return result;
         }
 
+        /// <summary>
+        /// Measures the control.
+        /// </summary>
+        /// <param name="availableSize">The available size for the control.</param>
+        /// <returns>The desired size.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
             var text = Text;
@@ -239,6 +292,11 @@ namespace Avalonia.Controls.Presenters
             }
         }
 
+        /// <summary>
+        /// Coerces the caret index value.
+        /// </summary>
+        /// <param name="value">The value to coerce.</param>
+        /// <returns>The coerced value.</returns>
         private int CoerceCaretIndex(int value)
         {
             var text = Text;
@@ -246,6 +304,11 @@ namespace Avalonia.Controls.Presenters
             return Math.Max(0, Math.Min(length, value));
         }
 
+        /// <summary>
+        /// Delegate called on caret timer tick.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The event arguments.</param>
         private void CaretTimerTick(object sender, EventArgs e)
         {
             _caretBlink = !_caretBlink;

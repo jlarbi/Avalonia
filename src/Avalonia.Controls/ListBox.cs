@@ -65,7 +65,9 @@ namespace Avalonia.Controls
             private set { SetAndRaise(ScrollProperty, ref _scroll, value); }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the selected items.
+        /// </summary>
         public new IList SelectedItems => base.SelectedItems;
 
         /// <inheritdoc/>
@@ -84,7 +86,12 @@ namespace Avalonia.Controls
             set { SetValue(VirtualizationModeProperty, value); }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Creates the <see cref="ItemContainerGenerator"/> for the control.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="IItemContainerGenerator"/> or null.
+        /// </returns>
         protected override IItemContainerGenerator CreateItemContainerGenerator()
         {
             return new ItemContainerGenerator<ListBoxItem>(
@@ -93,7 +100,10 @@ namespace Avalonia.Controls
                 ListBoxItem.ContentTemplateProperty);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called before the <see cref="InputElement.GotFocus"/> event occurs.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnGotFocus(GotFocusEventArgs e)
         {
             base.OnGotFocus(e);
@@ -107,7 +117,10 @@ namespace Avalonia.Controls
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called before the <see cref="InputElement.PointerPressed"/> event occurs.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
             base.OnPointerPressed(e);
@@ -122,6 +135,10 @@ namespace Avalonia.Controls
             }
         }
 
+        /// <summary>
+        /// Called when the control's template is applied.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnTemplateApplied(TemplateAppliedEventArgs e)
         {
             base.OnTemplateApplied(e);

@@ -37,6 +37,11 @@ namespace Avalonia.Markup.Data.Plugins
             return false;
         }
 
+        /// <summary>
+        /// Subscribes a new observer to the property errors.
+        /// </summary>
+        /// <param name="observer">The new observer.</param>
+        /// <returns></returns>
         public IDisposable Subscribe(IObserver<object> observer)
         {
             observer.OnNext(_error);

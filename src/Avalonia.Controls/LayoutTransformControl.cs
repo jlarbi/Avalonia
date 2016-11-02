@@ -15,23 +15,38 @@ using System.Reactive.Linq;
 
 namespace Avalonia.Controls
 {
+    /// <summary>
+    /// Definition of the <see cref="LayoutTransformControl"/> class.
+    /// </summary>
     public class LayoutTransformControl : ContentControl
     {
+        /// <summary>
+        /// The layout transform property.
+        /// </summary>
         public static readonly AvaloniaProperty<Transform> LayoutTransformProperty =
             AvaloniaProperty.Register<LayoutTransformControl, Transform>(nameof(LayoutTransform));
 
+        /// <summary>
+        /// Initializes static member(s) of the <see cref="LayoutTransformControl"/> class.
+        /// </summary>
         static LayoutTransformControl()
         {
             LayoutTransformProperty.Changed
                 .AddClassHandler<LayoutTransformControl>(x => x.OnLayoutTransformChanged);
         }
 
+        /// <summary>
+        /// Gets or sets the layout transform.
+        /// </summary>
         public Transform LayoutTransform
         {
             get { return GetValue(LayoutTransformProperty); }
             set { SetValue(LayoutTransformProperty, value); }
         }
 
+        /// <summary>
+        /// Gets the transform root.
+        /// </summary>
         public Control TransformRoot => _transformRoot ??
                             (_transformRoot = this.GetVisualChildren().OfType<Control>().FirstOrDefault());
 
@@ -366,6 +381,10 @@ namespace Avalonia.Controls
             return computedSize;
         }
 
+        /// <summary>
+        /// Delegate called on layout transform changes.
+        /// </summary>
+        /// <param name="e">The event arguments.</param>
         private void OnLayoutTransformChanged(AvaloniaPropertyChangedEventArgs e)
         {
             var newTransform = e.NewValue as Transform;

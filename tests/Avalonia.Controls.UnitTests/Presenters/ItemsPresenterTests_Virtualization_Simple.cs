@@ -1015,15 +1015,28 @@ namespace Avalonia.Controls.UnitTests.Presenters
             }
         }
 
+        /// <summary>
+        /// Definition of the <see cref="TestItemsPresenter"/> class.
+        /// </summary>
         private class TestItemsPresenter : ItemsPresenter
         {
             private bool _useContainers;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestItemsPresenter"/> class.
+            /// </summary>
+            /// <param name="useContainers"></param>
             public TestItemsPresenter(bool useContainers)
             {
                 _useContainers = useContainers;
             }
 
+            /// <summary>
+            /// Creates the <see cref="ItemContainerGenerator"/> for the control.
+            /// </summary>
+            /// <returns>
+            /// An <see cref="IItemContainerGenerator"/> or null.
+            /// </returns>
             protected override IItemContainerGenerator CreateItemContainerGenerator()
             {
                 return _useContainers ?
@@ -1032,8 +1045,14 @@ namespace Avalonia.Controls.UnitTests.Presenters
             }
         }
 
+        /// <summary>
+        /// Definition of the <see cref="TestContainer"/> class.
+        /// </summary>
         private class TestContainer : ContentControl
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestContainer"/> class.
+            /// </summary>
             public TestContainer()
             {
                 Width = 10;

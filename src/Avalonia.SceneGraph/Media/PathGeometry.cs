@@ -8,6 +8,9 @@ using System;
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="PathGeometry"/> class.
+    /// </summary>
     public class PathGeometry : StreamGeometry
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace Avalonia.Media
         public static readonly StyledProperty<FillRule> FillRuleProperty =
                                  AvaloniaProperty.Register<PathGeometry, FillRule>(nameof(FillRule));
 
+        /// <summary>
+        /// Initializes static member(s) of the <see cref="PathGeometry"/> class.
+        /// </summary>
         static PathGeometry()
         {
             FiguresProperty.Changed.Subscribe(onNext: v =>
@@ -63,6 +69,9 @@ namespace Avalonia.Media
             set { SetValue(FillRuleProperty, value); }
         }
 
+        /// <summary>
+        /// Gets the platform-specific implementation of the geometry.
+        /// </summary>
         public override IGeometryImpl PlatformImpl
         {
             get
@@ -77,6 +86,10 @@ namespace Avalonia.Media
             }
         }
 
+        /// <summary>
+        /// Clones the geometry.
+        /// </summary>
+        /// <returns></returns>
         public override Geometry Clone()
         {
             PrepareIfNeeded();
@@ -84,6 +97,9 @@ namespace Avalonia.Media
             return base.Clone();
         }
 
+        /// <summary>
+        /// Prepares the geometry if needed.
+        /// </summary>
         public void PrepareIfNeeded()
         {
             if (_isDirty)
@@ -101,6 +117,9 @@ namespace Avalonia.Media
             }
         }
 
+        /// <summary>
+        /// Notifies changes.
+        /// </summary>
         internal void NotifyChanged()
         {
             _isDirty = true;
@@ -111,6 +130,11 @@ namespace Avalonia.Media
         private IDisposable _figuresPropertiesObserver = null;
         private bool _isDirty = true;
 
+        /// <summary>
+        /// Delegate called on figure(s) changed.
+        /// </summary>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
         private void OnFiguresChanged(PathFigures oldValue, PathFigures newValue)
         {
             _figuresObserver?.Dispose();

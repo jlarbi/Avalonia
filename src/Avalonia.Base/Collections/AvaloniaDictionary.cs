@@ -42,7 +42,9 @@ namespace Avalonia.Collections
         /// <inheritdoc/>
         public int Count => _inner.Count;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the flag indicating whether the dictionary is read only or not.
+        /// </summary>
         public bool IsReadOnly => false;
 
         /// <inheritdoc/>

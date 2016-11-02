@@ -15,8 +15,15 @@ using ReactiveUI;
 
 namespace Avalonia
 {
+    /// <summary>
+    /// Definition of the <see cref="WindowExtensions"/>
+    /// </summary>
 	public static class WindowExtensions
 	{
+        /// <summary>
+        /// Attaches the dev tools to the given window.
+        /// </summary>
+        /// <param name="window">The caller window.</param>
 		public static void AttachDevTools(this Window window)
 		{
 			Avalonia.Diagnostics.DevTools.Attach(window);
@@ -26,11 +33,18 @@ namespace Avalonia
 
 namespace Avalonia.Diagnostics
 {
+    /// <summary>
+    /// Definition of the <see cref="DevTools"/>
+    /// </summary>
 	public class DevTools : UserControl
     {
         private static Dictionary<Window, Window> s_open = new Dictionary<Window, Window>();
         private IDisposable _keySubscription;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DevTools"/> class.
+        /// </summary>
+        /// <param name="root"></param>
         public DevTools(IControl root)
         {
             InitializeComponent();
@@ -42,8 +56,16 @@ namespace Avalonia.Diagnostics
                 .Subscribe(RawKeyDown);
         }
 
+        /// <summary>
+        /// Gets the root control.
+        /// </summary>
         public IControl Root { get; }
 
+        /// <summary>
+        /// Atteches to the given window.
+        /// </summary>
+        /// <param name="window"></param>
+        /// <returns></returns>
         public static IDisposable Attach(Window window)
         {
             return window.AddHandler(

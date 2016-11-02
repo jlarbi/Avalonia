@@ -1,0 +1,17 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Test" ToolsVersion="4.0">
+  <!-- External references target(s). -->
+  <!-- <Import Project="$(SolutionDir)Targets\XXXXXX.References.Targets" /> -->
+  <!-- Avalonia references. -->
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)src\Gtk\Avalonia.Cairo\Avalonia.Cairo.csproj">
+      <Project>{FB05AC90-89BA-4F2F-A924-F37875FB547C}</Project>
+      <Name>Avalonia.Cairo</Name>
+	  <Private>False</Private>
+    </ProjectReference>
+	<ProjectReference Include="$(SolutionDir)src\Gtk\Avalonia.Gtk\Avalonia.Gtk.csproj">
+      <Project>{54F237D5-A70A-4752-9656-0C70B1A7B047}</Project>
+      <Name>Avalonia.Gtk</Name>
+	  <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

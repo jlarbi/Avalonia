@@ -12,8 +12,16 @@ using Avalonia.VisualTree;
 
 namespace Avalonia.Diagnostics
 {
+    /// <summary>
+    /// Definition of the <see cref="Debug"/> class.
+    /// </summary>
     public static class Debug
     {
+        /// <summary>
+        /// Prints the visual tree content as string.
+        /// </summary>
+        /// <param name="visual"></param>
+        /// <returns></returns>
         public static string PrintVisualTree(IVisual visual)
         {
             StringBuilder result = new StringBuilder();

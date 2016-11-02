@@ -21,14 +21,25 @@ using Xunit.Abstractions;
 
 namespace Avalonia.LeakTests
 {
+    /// <summary>
+    /// Definition of the <see cref="ControlTests"/> class.
+    /// </summary>
     [DotMemoryUnit(FailIfRunWithoutSupport = false)]
     public class ControlTests
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ControlTests"/> class.
+        /// </summary>
+        /// <param name="atr"></param>
         public ControlTests(ITestOutputHelper atr)
         {
             DotMemoryUnitTestOutput.SetOutputMethod(atr.WriteLine);
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Canvas_Is_Freed()
         {
@@ -61,6 +72,10 @@ namespace Avalonia.LeakTests
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Named_Canvas_Is_Freed()
         {
@@ -97,6 +112,10 @@ namespace Avalonia.LeakTests
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void ScrollViewer_With_Content_Is_Freed()
         {
@@ -136,6 +155,10 @@ namespace Avalonia.LeakTests
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void TextBox_Is_Freed()
         {
@@ -170,6 +193,10 @@ namespace Avalonia.LeakTests
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void TextBox_With_Xaml_Binding_Is_Freed()
         {
@@ -216,6 +243,10 @@ namespace Avalonia.LeakTests
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void TextBox_Class_Listeners_Are_Freed()
         {
@@ -250,6 +281,10 @@ namespace Avalonia.LeakTests
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void TreeView_Is_Freed()
         {
@@ -309,6 +344,9 @@ namespace Avalonia.LeakTests
             renderer.ResetCalls();
         }
 
+        /// <summary>
+        /// Definition of the <see cref="Node"/> class.
+        /// </summary>
         private class Node
         {
             public string Name { get; set; }

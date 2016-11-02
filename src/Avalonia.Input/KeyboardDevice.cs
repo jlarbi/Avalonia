@@ -12,10 +12,16 @@ using Avalonia.VisualTree;
 
 namespace Avalonia.Input
 {
+    /// <summary>
+    /// Definition of the <see cref="KeyboardDevice"/> class.
+    /// </summary>
     public class KeyboardDevice : IKeyboardDevice, INotifyPropertyChanged
     {
         private IInputElement _focusedElement;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KeyboardDevice"/> class.
+        /// </summary>
         public KeyboardDevice()
         {
             InputManager.Process
@@ -24,14 +30,29 @@ namespace Avalonia.Input
                 .Subscribe(ProcessRawEvent);
         }
 
+        /// <summary>
+        /// Event informing about property changes.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Gets the keyboard device.
+        /// </summary>
         public static IKeyboardDevice Instance => AvaloniaLocator.Current.GetService<IKeyboardDevice>();
 
+        /// <summary>
+        /// Gets the input manager.
+        /// </summary>
         public IInputManager InputManager => AvaloniaLocator.Current.GetService<IInputManager>();
 
+        /// <summary>
+        /// Gets the focus manager.
+        /// </summary>
         public IFocusManager FocusManager => AvaloniaLocator.Current.GetService<IFocusManager>();
 
+        /// <summary>
+        /// Gets the currently focused element.
+        /// </summary>
         public IInputElement FocusedElement
         {
             get
@@ -46,6 +67,12 @@ namespace Avalonia.Input
             }
         }
 
+        /// <summary>
+        /// Sets the currently focused element.
+        /// </summary>
+        /// <param name="element">The newly focused element.</param>
+        /// <param name="method">The navigation method.</param>
+        /// <param name="modifiers">The input modifier(s) if any.</param>
         public void SetFocusedElement(
             IInputElement element, 
             NavigationMethod method,
@@ -72,11 +99,19 @@ namespace Avalonia.Input
             }
         }
 
+        /// <summary>
+        /// Informs about property changed.
+        /// </summary>
+        /// <param name="propertyName">The property changed name.</param>
         protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Processes an input event.
+        /// </summary>
+        /// <param name="e">The input event arguments.</param>
         private void ProcessRawEvent(RawInputEventArgs e)
         {
             IInputElement element = FocusedElement;

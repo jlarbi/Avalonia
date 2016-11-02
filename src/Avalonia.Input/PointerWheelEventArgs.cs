@@ -3,8 +3,14 @@
 
 namespace Avalonia.Input
 {
+    /// <summary>
+    /// Definition of the <see cref="PointerWheelEventArgs"/> class.
+    /// </summary>
     public class PointerWheelEventArgs : PointerEventArgs
     {
+        /// <summary>
+        /// Gets or sets the wheel delta.
+        /// </summary>
         public Vector Delta { get; set; }
     }
 }

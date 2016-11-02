@@ -249,6 +249,9 @@ namespace Avalonia.Direct2D1.Media
             _renderTarget.PushAxisAlignedClip(clip.ToSharpDX(), AntialiasMode.PerPrimitive);
         }
 
+        /// <summary>
+        /// Pops a clip change info.
+        /// </summary>
         public void PopClip()
         {
             _renderTarget.PopAxisAlignedClip();
@@ -281,11 +284,17 @@ namespace Avalonia.Direct2D1.Media
                 _layers.Push(null);
         }
 
+        /// <summary>
+        /// Pops an opacity change info.
+        /// </summary>
         public void PopOpacity()
         {
             PopLayer();
         }
 
+        /// <summary>
+        /// Pops a layer change info.
+        /// </summary>
         private void PopLayer()
         {
             var layer = _layers.Pop();
@@ -336,6 +345,10 @@ namespace Avalonia.Direct2D1.Media
             }
         }
 
+        /// <summary>
+        /// Push a geometry clip change info.
+        /// </summary>
+        /// <param name="clip"></param>
         public void PushGeometryClip(Avalonia.Media.Geometry clip)
         {
             var parameters = new LayerParameters
@@ -352,11 +365,19 @@ namespace Avalonia.Direct2D1.Media
 
         }
 
+        /// <summary>
+        /// Pops a geometry clip change info.
+        /// </summary>
         public void PopGeometryClip()
         {
             PopLayer();
         }
 
+        /// <summary>
+        /// Pushes an opacity mask change info.
+        /// </summary>
+        /// <param name="mask"></param>
+        /// <param name="bounds"></param>
         public void PushOpacityMask(IBrush mask, Rect bounds)
         {
             var parameters = new LayerParameters
@@ -372,6 +393,9 @@ namespace Avalonia.Direct2D1.Media
             _layers.Push(layer);
         }
 
+        /// <summary>
+        /// Pops an opacity mask change info.
+        /// </summary>
         public void PopOpacityMask()
         {
             PopLayer();

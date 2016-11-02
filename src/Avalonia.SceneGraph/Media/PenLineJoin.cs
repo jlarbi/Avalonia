@@ -6,10 +6,24 @@ using System.Threading.Tasks;
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="PenLineJoin"/> enumeration.
+    /// </summary>
     public enum PenLineJoin
     {
+        /// <summary>
+        /// Bevel.
+        /// </summary>
         Bevel,
+
+        /// <summary>
+        /// Miter
+        /// </summary>
         Miter,
+
+        /// <summary>
+        /// Round.
+        /// </summary>
         Round
     }
 }

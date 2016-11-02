@@ -11,20 +11,33 @@ namespace Avalonia.Platform
     /// </summary>
     public interface IPlatformThreadingInterface
     {
+        /// <summary>
+        /// Runs the thread loop.
+        /// </summary>
+        /// <param name="cancellationToken"></param>
         void RunLoop(CancellationToken cancellationToken);
 
         /// <summary>
-        /// Starts a timer.
+        /// Starts the timer.
         /// </summary>
         /// <param name="interval">The interval.</param>
         /// <param name="tick">The action to call on each tick.</param>
         /// <returns>An <see cref="IDisposable"/> used to stop the timer.</returns>
         IDisposable StartTimer(TimeSpan interval, Action tick);
 
+        /// <summary>
+        /// Signals listeners about a job done.
+        /// </summary>
         void Signal();
 
+        /// <summary>
+        /// Gets the flag indicating whether the thread is looped or not.
+        /// </summary>
         bool CurrentThreadIsLoopThread { get; }
 
+        /// <summary>
+        /// Event informing about a job done 
+        /// </summary>
         event Action Signaled;
     }
 }

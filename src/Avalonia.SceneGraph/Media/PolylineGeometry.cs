@@ -18,6 +18,11 @@ namespace Avalonia.Media
         private IList<Point> _points;
         private bool _isFilled;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PolylineGeometry"/> class.
+        /// </summary>
+        /// <param name="points"></param>
+        /// <param name="isFilled"></param>
         public PolylineGeometry(IList<Point> points, bool isFilled)
         {
             _points = points;
@@ -41,7 +46,10 @@ namespace Avalonia.Media
             PlatformImpl = impl;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Clones the geometry.
+        /// </summary>
+        /// <returns>A cloned geometry.</returns>
         public override Geometry Clone()
         {
             return new PolylineGeometry(new List<Point>(_points), _isFilled);

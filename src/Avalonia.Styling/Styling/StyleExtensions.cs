@@ -5,6 +5,9 @@ using System;
 
 namespace Avalonia.Styling
 {
+    /// <summary>
+    /// Definition of the <see cref="StyleExtensions"/> class.
+    /// </summary>
     public static class StyleExtensions
     {
         /// <summary>

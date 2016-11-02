@@ -16,10 +16,19 @@ using Avalonia.Themes.Default;
 
 namespace Avalonia.DesignerSupport
 {
+    /// <summary>
+    /// Definition of the <see cref="DesignerAssist"/> class.
+    /// </summary>
     class DesignerAssist
     {
+        /// <summary>
+        /// Definition of the <see cref="DesignerApp"/> class.
+        /// </summary>
         class DesignerApp : Application
         {
+            /// <summary>
+            /// Initializes the designer application.
+            /// </summary>
             public override void Initialize()
             {
                 Styles.Add(new DefaultTheme());
@@ -31,8 +40,15 @@ namespace Avalonia.DesignerSupport
             }
         }
 
+        /// <summary>
+        /// Gets or sets the designer API.
+        /// </summary>
         public static DesignerApi Api { get; set; }
         
+        /// <summary>
+        /// Initializes the designer assistant.
+        /// </summary>
+        /// <param name="shared"></param>
         public static void Init(Dictionary<string, object> shared)
         {
             Design.IsDesignMode = true;
@@ -72,6 +88,10 @@ namespace Avalonia.DesignerSupport
                 .SetupWithoutStarting();
         }
 
+        /// <summary>
+        /// Sets the scaling factor.
+        /// </summary>
+        /// <param name="factor"></param>
         private static void SetScalingFactor(double factor)
         {
             PlatformManager.SetDesignerScalingFactor(factor);

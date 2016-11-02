@@ -9,11 +9,19 @@ using System.Threading.Tasks;
 
 namespace Avalonia.DesignerSupport.Tests
 {
+    /// <summary>
+    /// Definition of the <see cref="Checker"/> class.
+    /// </summary>
     public class Checker : MarshalByRefObject
     {
         private string _appDir;
         private IntPtr _window;
 
+        /// <summary>
+        /// DO check.
+        /// </summary>
+        /// <param name="baseAsset"></param>
+        /// <param name="xamlText"></param>
         public void DoCheck(string baseAsset, string xamlText)
         {
             _appDir = new FileInfo(baseAsset).Directory.FullName;
@@ -41,9 +49,20 @@ namespace Avalonia.DesignerSupport.Tests
             SendMessage(_window, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Sends a message.
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="Msg"></param>
+        /// <param name="wParam"></param>
+        /// <param name="lParam"></param>
+        /// <returns></returns>
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
+        /// <summary>
+        /// Window close constant.
+        /// </summary>
         public const uint WM_CLOSE = 0x0010;
 
         private void OnWindowCreated(IntPtr lastIntPtr)

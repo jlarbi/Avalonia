@@ -3,6 +3,9 @@
 
 namespace Avalonia.Media
 {
+    /// <summary>
+    /// Definition of the <see cref="LineSegment"/> class.
+    /// </summary>
     public sealed class LineSegment : PathSegment
     {
         /// <summary>
@@ -23,9 +26,13 @@ namespace Avalonia.Media
             set { SetValue(PointProperty, value); }
         }
 
-        protected internal override void ApplyTo(StreamGeometryContext ctx)
+        /// <summary>
+        /// Applies a new segment to a line geometry.
+        /// </summary>
+        /// <param name="pContext">The geometry context.</param>
+        protected internal override void ApplyTo(StreamGeometryContext pContext)
         {
-            ctx.LineTo(Point);
+            pContext.LineTo(Point);
         }
     }
 }

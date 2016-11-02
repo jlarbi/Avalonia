@@ -43,16 +43,35 @@ namespace Avalonia.Platform
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public class ExportAvaloniaModuleAttribute : Attribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExportAvaloniaModuleAttribute"/> class.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="moduleType"></param>
         public ExportAvaloniaModuleAttribute(string name, Type moduleType)
         {
             Name = name;
             ModuleType = moduleType;
         }
 
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
         public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets the module type.
+        /// </summary>
         public Type ModuleType { get; private set; }
 
+        /// <summary>
+        /// Gets the windowing subsystem info.
+        /// </summary>
         public string ForWindowingSubsystem { get; set; } = "";
+
+        /// <summary>
+        /// Gets the rendering subsystem info.
+        /// </summary>
         public string ForRenderingSubsystem { get; set; } = "";
     }
 }

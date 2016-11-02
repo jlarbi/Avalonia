@@ -261,7 +261,9 @@ namespace Avalonia.Controls.Primitives
         /// </summary>
         protected bool AlwaysSelected => (SelectionMode & SelectionMode.AlwaysSelected) != 0;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Starts initializating
+        /// </summary>
         public override void BeginInit()
         {
             base.BeginInit();
@@ -269,7 +271,9 @@ namespace Avalonia.Controls.Primitives
             _updateSelectedIndex = int.MinValue;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Ends initializing.
+        /// </summary>
         public override void EndInit()
         {
             base.EndInit();
@@ -300,7 +304,10 @@ namespace Avalonia.Controls.Primitives
             return item as IControl;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called on items property changes.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void ItemsChanged(AvaloniaPropertyChangedEventArgs e)
         {
             base.ItemsChanged(e);
@@ -318,7 +325,12 @@ namespace Avalonia.Controls.Primitives
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called when the <see cref="INotifyCollectionChanged.CollectionChanged"/> event is
+        /// raised
+        /// </summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event args.</param>
         protected override void ItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             base.ItemsCollectionChanged(sender, e);
@@ -358,7 +370,11 @@ namespace Avalonia.Controls.Primitives
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called when new containers are materialized for the <see cref="ItemsControl"/> by its
+        /// <see cref="ItemContainerGenerator"/>.
+        /// </summary>
+        /// <param name="e">The details of the containers.</param>
         protected override void OnContainersMaterialized(ItemContainerEventArgs e)
         {
             base.OnContainersMaterialized(e);
@@ -383,7 +399,11 @@ namespace Avalonia.Controls.Primitives
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called when containers are dematerialized for the <see cref="ItemsControl"/> by its
+        /// <see cref="ItemContainerGenerator"/>.
+        /// </summary>
+        /// <param name="e">The details of the containers.</param>
         protected override void OnContainersDematerialized(ItemContainerEventArgs e)
         {
             base.OnContainersDematerialized(e);
@@ -400,6 +420,11 @@ namespace Avalonia.Controls.Primitives
             }
         }
 
+        /// <summary>
+        /// Called when containers are recycled for the <see cref="ItemsControl"/> by its
+        /// <see cref="ItemContainerGenerator"/>.
+        /// </summary>
+        /// <param name="e">The details of the containers.</param>
         protected override void OnContainersRecycled(ItemContainerEventArgs e)
         {
             foreach (var i in e.Containers)
@@ -413,7 +438,9 @@ namespace Avalonia.Controls.Primitives
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called before the <see cref="Control.DataContext"/> property changes.
+        /// </summary>
         protected override void OnDataContextChanging()
         {
             base.OnDataContextChanging();

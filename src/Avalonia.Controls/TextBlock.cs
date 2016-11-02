@@ -401,6 +401,10 @@ namespace Avalonia.Controls
             return new Size();
         }
 
+        /// <summary>
+        /// Called when the control is added to a rooted logical tree.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnAttachedToLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             base.OnAttachedToLogicalTree(e);

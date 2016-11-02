@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Avalonia.Controls.Generators
 {
+    /// <summary>
+    /// Definition of the <see cref="MenuItemContainerGenerator"/> class.
+    /// </summary>
     public class MenuItemContainerGenerator : ItemContainerGenerator<MenuItem>
     {
         /// <summary>
@@ -17,7 +20,11 @@ namespace Avalonia.Controls.Generators
         {
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Creates the container for an item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>The created container control.</returns>
         protected override IControl CreateContainer(object item)
         {
             var separator = item as Separator;

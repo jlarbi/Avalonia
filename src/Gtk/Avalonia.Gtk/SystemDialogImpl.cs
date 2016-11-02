@@ -10,8 +10,18 @@ using Avalonia.Platform;
 namespace Avalonia.Gtk
 {
     using global::Gtk;
+
+    /// <summary>
+    /// Definition of the <see cref="SystemDialogImpl"/> class.
+    /// </summary>
     class SystemDialogImpl : ISystemDialogImpl
     {
+        /// <summary>
+        /// Shows a file dialog.
+        /// </summary>
+        /// <param name="dialog">The details of the file dialog to show.</param>
+        /// <param name="parent">The parent window.</param>
+        /// <returns>A task returning the selected filenames.</returns>
         public Task<string[]> ShowFileDialogAsync(FileDialog dialog, IWindowImpl parent)
         {
             var tcs = new TaskCompletionSource<string[]>();
@@ -54,6 +64,12 @@ namespace Avalonia.Gtk
             return tcs.Task;
         }
 
+        /// <summary>
+        /// Shows a folder dialog.
+        /// </summary>
+        /// <param name="dialog">The details of the folder dialog to show.</param>
+        /// <param name="parent">The parent window.</param>
+        /// <returns>A task returning the selected folders.</returns>
         public Task<string> ShowFolderDialogAsync(OpenFolderDialog dialog, IWindowImpl parent)
         {
             var tcs = new TaskCompletionSource<string>();

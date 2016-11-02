@@ -20,9 +20,16 @@ namespace Avalonia.Threading
         private readonly IPlatformThreadingInterface _platform;
         private readonly JobRunner _jobRunner;
 
+        /// <summary>
+        /// Gets the UI Thread dispatcher.
+        /// </summary>
         public static Dispatcher UIThread { get; } =
             new Dispatcher(AvaloniaLocator.Current.GetService<IPlatformThreadingInterface>());
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dispatcher"/> class.
+        /// </summary>
+        /// <param name="platform"></param>
         public Dispatcher(IPlatformThreadingInterface platform)
         {
             _platform = platform;
@@ -33,8 +40,16 @@ namespace Avalonia.Threading
             _platform.Signaled += _jobRunner.RunJobs;
         }
 
+        /// <summary>
+        /// Checks whether on the Owner thread or not.
+        /// </summary>
+        /// <returns>True if on the owner thread.</returns>
         public bool CheckAccess() => _platform?.CurrentThreadIsLoopThread ?? true;
 
+        /// <summary>
+        /// Verify whether on the Owner thread or not and throw accordingly.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Triggered if not on the owner thread.</exception>
         public void VerifyAccess()
         {
             if (!CheckAccess())

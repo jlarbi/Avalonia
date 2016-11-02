@@ -118,7 +118,9 @@ namespace Avalonia.Collections
         /// <inheritdoc/>
         bool IList.IsFixedSize => false;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the flag indicating whether the collection is read only or not.
+        /// </summary>
         bool IList.IsReadOnly => false;
 
         /// <inheritdoc/>
@@ -130,7 +132,9 @@ namespace Avalonia.Collections
         /// <inheritdoc/>
         object ICollection.SyncRoot => null;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the flag indicating whether the collection is read only or not.
+        /// </summary>
         bool ICollection<T>.IsReadOnly => false;
 
         /// <summary>

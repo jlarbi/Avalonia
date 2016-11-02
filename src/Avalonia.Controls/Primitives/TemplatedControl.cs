@@ -228,7 +228,9 @@ namespace Avalonia.Controls.Primitives
             control.SetValue(IsTemplateFocusTargetProperty, value);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Creates the visual children of the control, if necessary
+        /// </summary>
         public sealed override void ApplyTemplate()
         {
             var template = Template;
@@ -271,7 +273,10 @@ namespace Avalonia.Controls.Primitives
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the element that recieves the focus adorner.
+        /// </summary>
+        /// <returns>The control that recieves the focus adorner.</returns>
         protected override IControl GetTemplateFocusTarget()
         {
             foreach (Control child in this.GetTemplateChildren())
@@ -285,7 +290,10 @@ namespace Avalonia.Controls.Primitives
             return this;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called when the control is removed from a rooted logical tree.
+        /// </summary>
+        /// <param name="e">The event args.</param>
         protected override void OnDetachedFromLogicalTree(LogicalTreeAttachmentEventArgs e)
         {
             if (VisualChildren.Count > 0)

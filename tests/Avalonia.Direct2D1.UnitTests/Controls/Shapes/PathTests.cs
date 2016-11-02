@@ -8,10 +8,17 @@ using Xunit;
 
 namespace Avalonia.Direct2D1.UnitTests.Controls.Shapes
 {
+    /// <summary>
+    /// Definition of the <see cref="PathTests"/> class.
+    /// </summary>
     public class PathTests
     {
         private static readonly RectComparer Compare = new RectComparer();
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Should_Measure_Expander_Triangle_Correctly()
         {
@@ -35,6 +42,10 @@ namespace Avalonia.Direct2D1.UnitTests.Controls.Shapes
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        // TO DO: Comment...
         [Fact]
         public void Should_Measure_Expander_Triangle_With_Stroke_Correctly()
         {

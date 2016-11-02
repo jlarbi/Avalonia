@@ -80,16 +80,34 @@ namespace Avalonia.Media
         /// </summary>
         public double Thickness { get; } = 1.0;
 
+        /// <summary>
+        /// Gets the pen dash style.
+        /// </summary>
         public DashStyle DashStyle { get; }
 
+        /// <summary>
+        /// Gets the pen dash cap mode.
+        /// </summary>
         public PenLineCap DashCap { get; }
 
+        /// <summary>
+        /// Gets the pen start line cap mode.
+        /// </summary>
         public PenLineCap StartLineCap { get; } = PenLineCap.Flat;
 
+        /// <summary>
+        /// Gets the pen stop line cap mode.
+        /// </summary>
         public PenLineCap EndLineCap { get; } = PenLineCap.Flat;
 
+        /// <summary>
+        /// Gets the pen line join mode.
+        /// </summary>
         public PenLineJoin LineJoin { get; } = PenLineJoin.Miter;
 
+        /// <summary>
+        /// Gets the pen miter limit.
+        /// </summary>
         public double MiterLimit { get; } = 10.0;
     }
 }

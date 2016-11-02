@@ -3,6 +3,9 @@
 
 namespace Avalonia.Input
 {
+    /// <summary>
+    /// Definition of the <see cref="IFocusScope"/> interface.
+    /// </summary>
     public interface IFocusScope
     {
     }

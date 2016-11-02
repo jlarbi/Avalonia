@@ -94,7 +94,11 @@ namespace Avalonia.Controls.Presenters
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Measures the control and its child elements as part of a layout pass.
+        /// </summary>
+        /// <param name="availableSize">The size available to the control.</param>
+        /// <returns>The desired size for the control.</returns>
         public override Size MeasureOverride(Size availableSize)
         {
             var window = Owner.GetVisualRoot() as TopLevel;

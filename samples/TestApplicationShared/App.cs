@@ -15,8 +15,14 @@ using Avalonia.Media;
 
 namespace TestApplication
 {
+    /// <summary>
+    /// Definition of the <see cref="App"/> class.
+    /// </summary>
     public class App : Application
     {
+        /// <summary>
+        /// Runs the application.
+        /// </summary>
         public void Run()
         {
             Styles.Add(new DefaultTheme());
@@ -41,6 +47,10 @@ namespace TestApplication
             Run(wnd);
         }
 
+        /// <summary>
+        /// Creates the application's simple window.
+        /// </summary>
+        /// <returns>The window.</returns>
         // This provides a simple UI tree for testing input handling, drawing, etc
         public static Window CreateSimpleWindow()
         {
@@ -78,6 +88,5 @@ namespace TestApplication
 
             return window;
         }
-
     }
 }

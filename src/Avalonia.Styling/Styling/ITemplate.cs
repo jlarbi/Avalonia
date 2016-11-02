@@ -3,8 +3,15 @@
 
 namespace Avalonia.Styling
 {
+    /// <summary>
+    /// Definition of the <see cref="ITemplate"/> interface.
+    /// </summary>
     public interface ITemplate
     {
+        /// <summary>
+        /// Builds the template.
+        /// </summary>
+        /// <returns></returns>
         object Build();
     }
 }

@@ -3,6 +3,9 @@
 
 namespace Avalonia.Input
 {
+    /// <summary>
+    /// Definition of the <see cref="IInputDevice"/> interface.
+    /// </summary>
     public interface IInputDevice
     {
     }

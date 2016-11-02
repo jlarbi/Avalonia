@@ -178,6 +178,11 @@ namespace Avalonia.Styling.UnitTests
                 set { SetValue(FooProperty, value); }
             }
 
+            /// <summary>
+            /// Measures the control and its child elements as part of a layout pass.
+            /// </summary>
+            /// <param name="availableSize">The size available to the control.</param>
+            /// <returns>The desired size for the control.</returns>
             protected override Size MeasureOverride(Size availableSize)
             {
                 throw new NotImplementedException();

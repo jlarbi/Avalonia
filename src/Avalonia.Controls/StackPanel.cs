@@ -245,6 +245,13 @@ namespace Avalonia.Controls
             return new Size(arrangedWidth, arrangedHeight);
         }
 
+        /// <summary>
+        /// Arrange the given child in the supplied region.
+        /// </summary>
+        /// <param name="child">The child to arrange.</param>
+        /// <param name="rect">The region in which arrange the control.</param>
+        /// <param name="panelSize">The panel size.</param>
+        /// <param name="orientation">The orientation </param>
         internal virtual void ArrangeChild(
             IControl child,
             Rect rect,

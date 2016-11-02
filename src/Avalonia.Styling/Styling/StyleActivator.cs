@@ -9,14 +9,32 @@ using System.Reactive.Linq;
 
 namespace Avalonia.Styling
 {
+    /// <summary>
+    /// Definition of the <see cref="ActivatorMode"/> enumeration.
+    /// </summary>
     public enum ActivatorMode
     {
+        /// <summary>
+        /// And
+        /// </summary>
         And,
+
+        /// <summary>
+        /// Or.
+        /// </summary>
         Or,
     }
 
+    /// <summary>
+    /// Definition of the <see cref="StyleActivator"/> class.
+    /// </summary>
     public static class StyleActivator
     {
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        /// <param name="inputs"></param>
+        /// <returns></returns>
         public static IObservable<bool> And(IList<IObservable<bool>> inputs)
         {
             if (inputs.Count == 0)
@@ -35,6 +53,11 @@ namespace Avalonia.Styling
             }
         }
 
+        /// <summary>
+        /// TO DO: Comment...
+        /// </summary>
+        /// <param name="inputs"></param>
+        /// <returns></returns>
         public static IObservable<bool> Or(IList<IObservable<bool>> inputs)
         {
             if (inputs.Count == 0)

@@ -74,6 +74,11 @@ namespace Avalonia.Diagnostics.Views
             control.SetValue(RowProperty, value);
         }
 
+        /// <summary>
+        /// Measures the control and its child elements as part of a layout pass.
+        /// </summary>
+        /// <param name="availableSize">The size available to the control.</param>
+        /// <returns>The desired size for the control.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
             _columnWidths.Clear();
@@ -96,6 +101,11 @@ namespace Avalonia.Diagnostics.Views
             return new Size(_totalWidth, _totalHeight);
         }
 
+        /// <summary>
+        /// Positions child elements as part of a layout pass.
+        /// </summary>
+        /// <param name="finalSize">The size available to the control.</param>
+        /// <returns>The actual size used.</returns>
         protected override Size ArrangeOverride(Size finalSize)
         {
             var columnWidth = finalSize.Width / _columnWidths.Count;

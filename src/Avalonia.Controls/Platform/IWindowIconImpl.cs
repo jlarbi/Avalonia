@@ -3,6 +3,9 @@
 
 namespace Avalonia.Platform
 {
+    /// <summary>
+    /// Definition of the <see cref="IWindowIconImpl"/> class.
+    /// </summary>
     public interface IWindowIconImpl
     {
     }

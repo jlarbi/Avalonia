@@ -6,8 +6,20 @@ using Avalonia.Layout;
 
 namespace Avalonia.Input.Raw
 {
+    /// <summary>
+    /// Definition of the <see cref="RawMouseWheelEventArgs"/> class.
+    /// </summary>
     public class RawMouseWheelEventArgs : RawMouseEventArgs
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RawMouseWheelEventArgs"/> class.
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="timestamp"></param>
+        /// <param name="root"></param>
+        /// <param name="position"></param>
+        /// <param name="delta"></param>
+        /// <param name="inputModifiers"></param>
         public RawMouseWheelEventArgs(
             IInputDevice device,
             uint timestamp,
@@ -19,6 +31,9 @@ namespace Avalonia.Input.Raw
             Delta = delta;
         }
 
+        /// <summary>
+        /// Gets the wheel delta.
+        /// </summary>
         public Vector Delta { get; private set; }
     }
 }

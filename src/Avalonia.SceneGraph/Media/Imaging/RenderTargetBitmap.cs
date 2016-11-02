@@ -48,6 +48,10 @@ namespace Avalonia.Media.Imaging
             return factory.CreateRenderTargetBitmap(width, height);
         }
 
+        /// <summary>
+        /// Creates a drawing context.
+        /// </summary>
+        /// <returns>The new drawing context.</returns>
         public DrawingContext CreateDrawingContext() => PlatformImpl.CreateDrawingContext();
     }
 }

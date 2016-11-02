@@ -5,17 +5,59 @@ using System;
 
 namespace Avalonia.Input.Raw
 {
+    /// <summary>
+    /// Definition of the <see cref="RawMouseEventType"/> enumeration.
+    /// </summary>
     public enum RawMouseEventType
     {
+        /// <summary>
+        /// Leaving window.
+        /// </summary>
         LeaveWindow,
+
+        /// <summary>
+        /// Left button down.
+        /// </summary>
         LeftButtonDown,
+
+        /// <summary>
+        /// Left button up.
+        /// </summary>
         LeftButtonUp,
+
+        /// <summary>
+        /// Right button down.
+        /// </summary>
         RightButtonDown,
+
+        /// <summary>
+        /// Right button up.
+        /// </summary>
         RightButtonUp,
+
+        /// <summary>
+        /// Middle button down.
+        /// </summary>
         MiddleButtonDown,
+
+        /// <summary>
+        /// Middle button up.
+        /// </summary>
         MiddleButtonUp,
+
+        /// <summary>
+        /// Moving.
+        /// </summary>
         Move,
+
+        /// <summary>
+        /// Wheeling.
+        /// </summary>
         Wheel,
+
+        /// <summary>
+        /// Non client left button down.
+        /// </summary>
         NonClientLeftButtonDown,
     }
 
