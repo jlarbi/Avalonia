@@ -2,7 +2,7 @@
   <!-- External references target(s). -->
   <!-- <Import Project="$(SolutionDir)Targets\XXXXXX.References.Targets" /> -->
   <!-- Avalonia references. All projects needing Layout seem to need animation and scene graph references -->
-  <Import Project="$(SolutionDir)Targets\Avalonia.Animation.SceneGraph.References.Targets" />
+  <Import Project="$(SolutionDir)Targets\Avalonia.Animation.Visual.References.Targets" />
   <ItemGroup>
 	<ProjectReference Include="$(SolutionDir)src\Avalonia.Layout\Avalonia.Layout.csproj">
       <Project>{42472427-4774-4C81-8AFF-9F27B8E31721}</Project>
