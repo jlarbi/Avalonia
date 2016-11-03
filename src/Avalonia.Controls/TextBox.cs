@@ -297,6 +297,7 @@ namespace Avalonia.Controls
             {
                 if (!_ignoreTextChanges)
                 {
+                    CaretIndex = CoerceCaretIndex(CaretIndex, value?.Length ?? 0);
                     SetAndRaise(TextProperty, ref _text, value);
                 }
             }
@@ -717,15 +718,22 @@ namespace Avalonia.Controls
             return null;
         }
 
-        /// <summary>
+		/// <summary>
         /// Coerces the caret index on changes.
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        private int CoerceCaretIndex(int value)
+        private int CoerceCaretIndex(int value) => CoerceCaretIndex(value, Text?.Length ?? 0);
+        
+		/// <summary>
+        /// Coerces the caret index on changes.
+        /// </summary>
+        /// <param name="value"></param>
+		/// <param name="length"></param>
+        /// <returns></returns>
+        private int CoerceCaretIndex(int value, int length)
         {
             var text = Text;
-            var length = text?.Length ?? 0;
 
             if (value < 0)
             {
