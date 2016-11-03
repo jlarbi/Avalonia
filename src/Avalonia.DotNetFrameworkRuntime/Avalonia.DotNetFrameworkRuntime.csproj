@@ -44,6 +44,24 @@
     <Compile Include="RuntimeInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Avalonia.Base\Avalonia.Base.csproj">
+      <Project>{B09B78D8-9B26-48B0-9149-D64A2F120F3F}</Project>
+      <Name>Avalonia.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalonia.Controls\Avalonia.Controls.csproj">
+      <Project>{D2221C82-4A25-4583-9B43-D791E3F6820C}</Project>
+      <Name>Avalonia.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalonia.Visuals\Avalonia.Visuals.csproj">
+      <Project>{eb582467-6abb-43a1-b052-e981ba910e3a}</Project>
+      <Name>Avalonia.Visuals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalonia.Styling\Avalonia.Styling.csproj">
+      <Project>{f1baa01a-f176-4c6a-b39d-5b40bb1b148f}</Project>
+      <Name>Avalonia.Styling</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\Shared\PlatformSupport\PlatformSupport.projitems" Label="Shared" />
